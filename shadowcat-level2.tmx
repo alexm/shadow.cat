@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header
+    creationtool="OmegaT"
+    creationtoolversion="1.8.1_2"
+    segtype="sentence"
+    o-tmf="OmegaT TMX"
+    adminlang="EN-US"
+    srclang="EN-US"
+    datatype="plaintext"
+  >
+  </header>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Linux Magazine Column 94 (Jun 2007)</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Columna 94 del Linux Magazine (juny de 2007)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[suggested title: ``The Moose is Flying (part 1)'']</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>[títol suggerit: «El Moose està volant (1a part)»]</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Perl's object system is very ``flexible'', meaning, you get to build it from the ground up.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El sistema d'objectes de Perl és molt «flexible», és a dir, es construeix de baix cap a dalt.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can build traditional hash-based objects, or more exotic array-based or inside-out objects.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podeu construir objectes tradicionals basats en taules de dispersió, o objectes més exòtics basats en matrius o objectes capgirats.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And then you have to create the accessors, define access policies, and perform a lot of repetitive code.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Aleshores heu de crear els mètodes accessors, definir les polítiques d'accés i generar un munt de codi repetit.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Luckily, Perl is introspective enough that you can get Perl to do most of the hard boring work.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Afortunadament, Perl és prou introspectiu com perquè li encomaneu la majoria del treball dur i avorrit.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This has resulted in a number of ``class frameworks'' finding their way onto the CPAN.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Això ha provocat que un bon nombre «d'entorns de treball per a classes» hagin estat publicats al CPAN.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> framework appeared about a year ago, and I initially dismissed it as ``yet another class framework'', much in the same way as I feel about yet another templating system or object-relational mapper.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>L'enton de treball <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> va sorgir fa un any i inicialment jo el vaig descartar com «un altre entorn de treball per a classes», de la mateixa manera que un altre sistema de plantilles o un altre mapeig d'objectes relacional em fan sentir.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, I recently took a look at what <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> had become, and was pleasantly surprised.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tanmateix, vaig fer un cop d'ull recentment al que s'havia convertit <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> i em vaig endur una sorpresa agradable.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As I started playing with it, I exclaimed frequently that this framework would have saved me quite a bit of time on some past projects, such as the text I wrote for our <bpt i='1' x='1'>&lt;e1&gt;</bpt>Intermediate Perl<ept i='1'>&lt;/e1&gt;</ept> course and book, parts of which have been included as the <bpt i='2' x='2'>&lt;e2&gt;</bpt>perlboot<ept i='2'>&lt;/e2&gt;</ept> manpage in the distribution.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Així que em vaig posar a jugar-hi, sovint vaig exclamar que aquest entorn de treball m'hauria estalviat un bona pila de temps en alguns projectes passats, com ara el text que vaig escriure per al nostre curs i llibre <bpt i='1' x='1'>&lt;e1&gt;</bpt>Intermediate Perl<ept i='1'>&lt;/e1&gt;</ept>, algunes parts del qual s'han inclòs com la pàpina de manual <bpt i='2' x='2'>&lt;e2&gt;</bpt>perlboot<ept i='2'>&lt;/e2&gt;</ept> a la distribució.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's recreate the ``animal'' classes from that text, using <bpt i='3' x='3'>&lt;c3&gt;</bpt>Moose<ept i='3'>&lt;/c3&gt;</ept>, to see how this emerging framework simplifies things.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Posem-nos a refer les classes «d'animals» d'aquell text utilitzant <bpt i='3' x='3'>&lt;c3&gt;</bpt>Moose<ept i='3'>&lt;/c3&gt;</ept> per veure com aquest entorn de treball emergent simplifica les coses.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>First, we'll create a horse class in <bpt i='0' x='0'>&lt;c0&gt;</bpt>Horse.pm<ept i='0'>&lt;/c0&gt;</ept> that has a name and a color:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Primer crearem la classe cavall a <bpt i='0' x='0'>&lt;c0&gt;</bpt>Horse.pm<ept i='0'>&lt;/c0&gt;</ept> que té un nom i un color:</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

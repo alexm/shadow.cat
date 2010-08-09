@@ -1,0 +1,298 @@
+<h1><a name="linux_magazine_column_94__jun_2007_">Columna 94 del Linux Magazine (juny de 2007)</a></h1>
+<p>[títol suggerit: «El Moose està volant (1a part)»]</p>
+<p>El sistema d'objectes de Perl és molt «flexible», és a dir, es construeix de baix cap a dalt. Podeu construir objectes tradicionals basats en taules de dispersió, o objectes més exòtics basats en matrius o objectes capgirats. Aleshores heu de crear els mètodes accessors, definir les polítiques d'accés i generar un munt de codi repetit.</p>
+<p>Afortunadament, Perl és prou introspectiu com perquè li encomaneu la majoria del treball dur i avorrit. Això ha provocat que un bon nombre «d'entorns de treball per a classes» hagin estat publicats al CPAN. L'enton de treball <code>Moose</code> va sorgir fa un any i inicialment jo el vaig descartar com «un altre entorn de treball per a classes», de la mateixa manera que un altre sistema de plantilles o un altre mapeig d'objectes relacional em fan sentir.</p>
+<p>Tanmateix, vaig fer un cop d'ull recentment al que s'havia convertit <code>Moose</code> i em vaig endur una sorpresa agradable. Així que em vaig posar a jugar-hi, sovint vaig exclamar que aquest entorn de treball m'hauria estalviat un bona pila de temps en alguns projectes passats, com ara el text que vaig escriure per al nostre curs i llibre <em>Intermediate Perl</em>, algunes parts del qual s'han inclòs com la pàpina de manual <em>perlboot</em> a la distribució. Posem-nos a refer les classes «d'animals» d'aquell text utilitzant <code>Moose</code> per veure com aquest entorn de treball emergent simplifica les coses.</p>
+<p>Primer crearem la classe cavall a <code>Horse.pm</code> que té un nom i un color:</p>
+<pre>
+  package Horse;
+  use Moose;
+  has 'name' =&gt; (is =&gt; 'rw');
+  has 'color' =&gt; (is =&gt; 'rw');
+  1;</pre>
+<p>Bringing in <code>Moose</code> defines <code>has</code>, which takes the name of an
+attribute along with its properties.  Here, we're saying that the
+two attributes are ``read/write''.  We can now use this class:</p>
+<pre>
+  use Horse;
+  my $talking = Horse-&gt;new(name =&gt; "Mr. Ed");
+  print $talking-&gt;name; # prints Mr. Ed
+  $talking-&gt;color("grey"); # sets the color</pre>
+<p>Note that I didn't have to define a <code>new</code> method: Moose does that for
+me.</p>
+<p>Now in the original text, <code>Horse</code> inherited from <code>Animal</code>.  We can do that
+rather simply.  In <code>Animal.pm</code>, we place:</p>
+<pre>
+  package Animal;
+  use Moose;
+  has 'name' =&gt; (is =&gt; 'rw');
+  has 'color' =&gt; (is =&gt; 'rw');
+  1;</pre>
+<p>And then update our <code>Horse.pm</code>:</p>
+<pre>
+  package Horse;
+  use Moose;
+  extends 'Animal';
+  1;</pre>
+<p>Note that <code>extends</code> here replaces the traditional <code>use base</code> and
+completely sets <code>@ISA</code>, rather than adding to it.  (It's possible
+that you might want to put this inside a BEGIN block, although I've
+not seen any examples requiring it yet.)</p>
+<p>At this point, <code>Horse</code> and <code>Animal</code> are identical. They can both be
+instantiated, and have the two given attributes.  In the original
+example, what distinguished a horse was the sound it made, which we
+can add here:</p>
+<pre>
+  package Horse;
+  use Moose;
+  extends 'Animal';
+  sub sound { 'neigh' }
+  1;</pre>
+<p>and then reference that in the common <code>speak</code> method in <code>Animal</code>:</p>
+<pre>
+  package Animal;
+  use Moose;
+  has 'name' =&gt; (is =&gt; 'rw');
+  has 'color' =&gt; (is =&gt; 'rw');
+  sub speak {
+    my $self = shift;
+    print $self-&gt;name, " goes ", $self-&gt;sound, "\n";
+  }
+  sub sound { confess shift, " should have defined sound!" }
+  1;</pre>
+<p>Note the use of <code>confess</code>, another freebie from Moose.  If the
+derived class hasn't defined a sound, I want to complain.  But since
+<code>Horse</code> defines <code>sound</code>, I'll never see that for a horse.  With this
+code, I can create my classic talking horse:</p>
+<pre>
+  my $talking = Horse-&gt;new(name =&gt; 'Mr. Ed');
+  $talking-&gt;speak; # says "Mr. Ed goes neigh"</pre>
+<p>So far, I'm still coding things that would be simple without Moose, so
+let's start diverging a bit to see the full power.  First, an
+<code>Animal</code> is really an abstract class, being used only to provide
+common attributes and methods to a concrete class (in this case, the
+horse class).  In Moose-terminology, this can best be described as a
+<em>role</em>.  A role is like a <em>mix-in</em>, providing a collection of
+attributes and methods that use those attributes.  A role never has
+any instances, because it's not a complete class.</p>
+<p>When we make <code>Animal</code> a role, we'll also get some additional support:</p>
+<pre>
+  package Animal;
+  use Moose::Role;
+  has 'name' =&gt; (is =&gt; 'rw');
+  has 'color' =&gt; (is =&gt; 'rw');
+  sub speak {
+    my $self = shift;
+    print $self-&gt;name, " goes ", $self-&gt;sound, "\n";
+  }
+  requires 'sound';
+  1;</pre>
+<p>Note that we've replaced the confess-including stub with <code>requires</code>.
+This informs Moose that this role must now be used with a class that
+provides the <code>sound</code> method, which will be checked at compile-time.
+To pull in a role, we use <code>with</code> rather than <code>extends</code>:</p>
+<pre>
+  package Horse;
+  use Moose;
+  with 'Animal';
+  sub sound { 'neigh' }
+  1;</pre>
+<p>Had we failed to include <code>sound</code>, we'd get notification very early
+on.  Cool.  At this point, <code>Horse</code> otherwise still works as before.</p>
+<p>What about those <code>with</code> and <code>requires</code> keywords?  Because they're
+defined by the <code>Moose</code> and <code>Moose::Role</code> imports, they remain as
+part of the package.  For the purists in us who don't like that kind
+of pollution, we can throw them away when we're done, using the
+correponding <code>no</code> keyword (similiar to <code>use strict</code> and <code>no
+strict</code>).  For example, we'd clean up <code>Horse.pm</code> with:</p>
+<pre>
+  package Horse;
+  use Moose;
+  with 'Animal';
+  sub sound { 'neigh' }
+  no Moose; # gets rid of scaffolding
+  1;</pre>
+<p>And similarly, <code>Animal.pm</code> requires <code>no Moose::Role</code> at the end.</p>
+<p>Moose supports the notion of a default value.  Let's add in the default
+color, and make that a class responsibility as well:</p>
+<pre>
+  package Animal;
+  ...
+  has 'color' =&gt; (is =&gt; 'rw', default =&gt; sub { shift-&gt;default_color });
+  requires 'default_color';
+  ...</pre>
+<p>If the color isn't provided, the default color of the class will be
+consulted, and <code>requires</code> ensures that the concrete class provides
+this default color.  Our derived animal classes now look like:</p>
+<pre>
+  ## Cow.pm:
+  package Cow;
+  use Moose;
+  with 'Animal';
+  sub default_color { 'spotted' }
+  sub sound { 'moooooo' }
+  no Moose;
+  1;
+  ## Horse.pm:
+  package Horse;
+  use Moose;
+  with 'Animal';
+  sub default_color { 'brown' }
+  sub sound { 'neigh' }
+  no Moose;
+  1;
+  ## Sheep.pm:
+  package Sheep;
+  use Moose;
+  with 'Animal';
+  sub default_color { 'black' }
+  sub sound { 'baaaah' }
+  no Moose;
+  1;</pre>
+<p>Now we can count sheep as one of our implemented classes:</p>
+<pre>
+  use Sheep;
+  my $baab = Sheep-&gt;new(color =&gt; 'white', name =&gt; 'Baab');
+  $baab-&gt;speak; # prints "Baab goes baaaah"</pre>
+<p>Well, this is pretty straightforward.  Let's solve a few other
+problems from the original material.</p>
+<p>The <code>Mouse</code> class was special, because it extended the <code>speak</code>
+method with an additional line of output.  While we could use
+traditional <code>SUPER::</code>-based method calls to call parent-class
+behaviors, this doesn't work with roles. (Roles don't end up in
+<code>@ISA</code>, because they're ``glued in'' rather than ``tacked above''.)</p>
+<p>Luckily, Moose provides the convenient <code>after</code> call to append
+additional steps to an existing subroutine.  Moose does this by
+replacing the original subroutine with a new subroutine that calls the
+original routine and then calls the additional code.  The context
+(list, scalar, or void) is properly preserved, as is the original
+return value.  Our amended <code>speak</code> looks something like:</p>
+<pre>
+  package Mouse;
+  use Moose;
+  with 'Animal';
+  sub default_color { 'white' }
+  sub sound { 'squeak' }
+  after 'speak' =&gt; sub {
+    print "[but you can barely hear it!]\n";
+  };
+  no Moose;
+  1;</pre>
+<p>This gives us a properly functioning mouse:</p>
+<pre>
+  my $mickey = Mouse-&gt;new(name =&gt; 'Mickey');
+  $mickey-&gt;speak;</pre>
+<p>which results in:</p>
+<pre>
+  Mickey goes squeak
+  [but you can barely hear it!]</pre>
+<p>We can also use <code>before</code> and <code>around</code> to precede the original
+behavior or control the calling of the original behavior, as
+necessary.  For example, to allow <code>name</code> to be used as both an accessor
+and still return <code>an unnamed Horse</code> when used as a class method, we
+can ``around'' the resulting name accessor:</p>
+<pre>
+  package Animal;
+  ...
+  has 'name' =&gt; (is =&gt; 'rw');
+  around 'name' =&gt; sub {
+    my $next = shift;
+    my $self = shift;
+    blessed $self ? $self-&gt;$next(@_) : "an unnamed $self";
+  };</pre>
+<p>The <code>has</code> creates the original behavior.  The <code>around</code> intercepts
+the original subroutine name, causing the original coderef to be
+passed as the first parameter to this new subroutine, which we capture
+in <code>$next</code>.  The original <code>$self</code> is shifted away, and tested to see
+if it's an object or not, via <code>blessed</code> (conveniently exported via
+Moose).  For a blessed object, we get the original behavior (a getter
+or setter), but for a class, we'll get the literal string.</p>
+<p>What if we never gave our animal a name?  We'll get warnings about
+undefined values.  We can give a default name just as we did a
+default color:</p>
+<pre>
+  has 'name' =&gt; (
+    is =&gt; 'rw',
+    default =&gt; sub { 'an unnamed ' . ref shift },
+   );</pre>
+<p>Again, we'd want that <code>around</code> immediately following this step.</p>
+<p>If we don't want people setting the color after the initial instance
+creation, we can declare the attribute as read-only:</p>
+<pre>
+  has 'color' =&gt; (is =&gt; 'ro', default =&gt; sub { shift-&gt;default_color });</pre>
+<p>Now an attempt to set the color is aborted with <code>Cannot assign a
+value to a read-only accessor...</code>.  If we really wanted to have a way
+to occasionally set the color, we can define a separately named
+<em>writer</em>:</p>
+<pre>
+  has 'color' =&gt; (
+    is =&gt; 'ro',
+    writer =&gt; 'private_set_color',
+    default =&gt; sub { shift-&gt;default_color },
+  );</pre>
+<p>Thus, we can't change the color of a mouse directly:</p>
+<pre>
+  my $m = Mouse-&gt;new;
+  my $color = $m-&gt;color; # gets the color
+  $m-&gt;color('green'); # DIES</pre>
+<p>But we can use our private name instead:</p>
+<pre>
+  $m-&gt;private_set_color('green'); # sets the color to green</pre>
+<p>By using a long name, we're less likely to accidentally call it, except
+where we intentionally want to change the color.</p>
+<p>Let's create a <code>RaceHorse</code> by adding ``race features'' to a <code>Horse</code>.</p>
+<p>First, we define the ``race features'' as, yes, another role:</p>
+<pre>
+  package Racer;
+  use Moose::Role;
+  has $_ =&gt; (is =&gt; 'rw', default =&gt; 0)
+    foreach qw(wins places shows losses);
+  no Moose::Role;
+  1;</pre>
+<p>Note that since <code>has</code> is just a subroutine call, we can use
+traditional Perl control structures (here, a <code>foreach</code> loop).  With a
+bit of code, we've added another four attributes.  The initial value
+of <code>0</code> means we don't have to write separate initialization code in
+our constructor.  Next, we can add some accessors:</p>
+<pre>
+  package Racer;
+  ...
+  sub won { my $self = shift; $self-&gt;wins($self-&gt;wins + 1) }
+  sub placed { my $self = shift; $self-&gt;places($self-&gt;places + 1) }
+  sub showed { my $self = shift; $self-&gt;shows($self-&gt;shows + 1) }
+  sub lost { my $self = shift; $self-&gt;losses($self-&gt;losses + 1) }</pre>
+<pre>
+  sub standings {
+    my $self = shift;
+    join ", ", map { $self-&gt;$_ . " $_" } qw(wins places shows losses);
+  }
+  ...</pre>
+<p>Each call to <code>won</code> increments the number of wins.  This would
+be simpler if we presumed that these objects are implemented
+as hashes (which they are by default), as:</p>
+<pre>
+  sub won { shift-&gt;{wins}++; }</pre>
+<p>However, by using the public interface (a method call), we could
+change the implementation later to inside-out objects or array-based
+objects without breaking this code.  This is especially important when
+creating a generic role, which could be mixed in to any kind of
+object.</p>
+<p>To create the race horse, we just mix a horse with a racer:</p>
+<pre>
+  package RaceHorse;
+  use Moose;
+  extends 'Horse';
+  with 'Racer';
+  no Moose;
+  1;</pre>
+<p>And now we can ride the ponies:</p>
+<pre>
+  use RaceHorse;
+  my $s = RaceHorse-&gt;new(name =&gt; 'Seattle Slew');
+  $s-&gt;won; $s-&gt;won; $s-&gt;won; $s-&gt;placed; $s-&gt;lost; # run some races
+  print $s-&gt;standings, "\n"; # 3 wins, 1 places, 0 shows, 1 losses</pre>
+<p>So far, I've just scratched the surface of what <code>Moose</code> provides.
+Next month, I'll look at some of the more advanced features of
+<code>Moose</code> that help keep the complex things relatively simple.
+Until then, enjoy!</p>
+
