@@ -2,7 +2,7 @@
 <p>[títol suggerit: «El Moose està volant (1a part)»]</p>
 <p>El sistema d'objectes de Perl és molt «flexible», és a dir, es construeix de baix cap a dalt. Podeu construir objectes tradicionals basats en taules de dispersió, o objectes més exòtics basats en matrius o objectes capgirats. Aleshores heu de crear els mètodes accessors, definir les polítiques d'accés i generar un munt de codi repetit.</p>
 <p>Afortunadament, Perl és prou introspectiu com perquè li encomaneu la majoria del treball dur i avorrit. Això ha provocat que un bon nombre «d'entorns de treball per a classes» hagin estat publicats al CPAN. L'enton de treball <code>Moose</code> va sorgir fa un any i inicialment jo el vaig descartar com «un altre entorn de treball per a classes», de la mateixa manera que un altre sistema de plantilles o un altre mapeig d'objectes relacional em fan sentir.</p>
-<p>Tanmateix, vaig fer un cop d'ull recentment al que s'havia convertit <code>Moose</code> i em vaig endur una sorpresa agradable. Així que em vaig posar a jugar-hi, sovint vaig exclamar que aquest entorn de treball m'hauria estalviat un bona pila de temps en alguns projectes passats, com ara el text que vaig escriure per al nostre curs i llibre <em>Intermediate Perl</em>, algunes parts del qual s'han inclòs com la pàpina de manual <em>perlboot</em> a la distribució. Posem-nos a refer les classes «d'animals» d'aquell text utilitzant <code>Moose</code> per veure com aquest entorn de treball emergent simplifica les coses.</p>
+<p>Tanmateix, vaig fer un cop d'ull recentment al que s'havia convertit <code>Moose</code> i em vaig endur una sorpresa agradable. Així que em vaig posar a jugar-hi, sovint vaig exclamar que aquest entorn de treball m'hauria estalviat un bona pila de temps en alguns projectes passats, com ara el text que vaig escriure per al nostre curs i llibre <em>Intermediate Perl</em>, algunes parts del qual s'han inclòs com la pàgina de manual <em>perlboot</em> a la distribució. Posem-nos a refer les classes «d'animals» d'aquell text utilitzant <code>Moose</code> per veure com aquest entorn de treball emergent simplifica les coses.</p>
 <p>Primer crearem la classe cavall a <code>Horse.pm</code> que té un nom i un color:</p>
 <pre>
   package Horse;
@@ -10,45 +10,35 @@
   has 'name' =&gt; (is =&gt; 'rw');
   has 'color' =&gt; (is =&gt; 'rw');
   1;</pre>
-<p>Bringing in <code>Moose</code> defines <code>has</code>, which takes the name of an
-attribute along with its properties.  Here, we're saying that the
-two attributes are ``read/write''.  We can now use this class:</p>
+<p>Incorporant <code>Moose</code> es defineix <code>has</code>, al qual se li passa el nom d'un atribut juntament amb les seves propietats. En aquest cas, diem que els dos atributs són de «lectura/escriptura». Ara podem utilitzar aquesta classe:</p>
 <pre>
   use Horse;
   my $talking = Horse-&gt;new(name =&gt; "Mr. Ed");
   print $talking-&gt;name; # prints Mr. Ed
   $talking-&gt;color("grey"); # sets the color</pre>
-<p>Note that I didn't have to define a <code>new</code> method: Moose does that for
-me.</p>
-<p>Now in the original text, <code>Horse</code> inherited from <code>Animal</code>.  We can do that
-rather simply.  In <code>Animal.pm</code>, we place:</p>
+<p>Fixeu-vos que no m'ha calgut definir un mètode <code>new</code>: Moose ho fa per mi.</p>
+<p>En el text original <code>Horse</code> heretava d'<code>Animal</code>. Podem fer això molt fàcilment. Posem a <code>Animal.pm</code>:</p>
 <pre>
   package Animal;
   use Moose;
   has 'name' =&gt; (is =&gt; 'rw');
   has 'color' =&gt; (is =&gt; 'rw');
   1;</pre>
-<p>And then update our <code>Horse.pm</code>:</p>
+<p>I aleshores actualitzem el nostre <code>Horse.pm</code>:</p>
 <pre>
   package Horse;
   use Moose;
   extends 'Animal';
   1;</pre>
-<p>Note that <code>extends</code> here replaces the traditional <code>use base</code> and
-completely sets <code>@ISA</code>, rather than adding to it.  (It's possible
-that you might want to put this inside a BEGIN block, although I've
-not seen any examples requiring it yet.)</p>
-<p>At this point, <code>Horse</code> and <code>Animal</code> are identical. They can both be
-instantiated, and have the two given attributes.  In the original
-example, what distinguished a horse was the sound it made, which we
-can add here:</p>
+<p>Fixeu-vos que aquí <code>extends</code> substitueix el tradicional <code>use base</code> i fixa completament <code>@ISA</code>, enlloc d'afegir-hi un element. (És possible que vulgueu posar això dins d'un bloc BEGIN, tot i que encara no he vist cap exemple que ho necessiti).</p>
+<p>En aquest punt, <code>Horse</code> i <code>Animal</code> són idèntics. Els dos es poden instanciar i se'ls pot assignar atributs. En l'exemple original, el que distingia un cavall era el so que feia, cosa que podem afegir aquí:</p>
 <pre>
   package Horse;
   use Moose;
   extends 'Animal';
   sub sound { 'neigh' }
   1;</pre>
-<p>and then reference that in the common <code>speak</code> method in <code>Animal</code>:</p>
+<p>i aleshores fer-hi referència al mètode comú <code>speak</code> d'<code>Animal</code>:</p>
 <pre>
   package Animal;
   use Moose;
@@ -60,22 +50,12 @@ can add here:</p>
   }
   sub sound { confess shift, " should have defined sound!" }
   1;</pre>
-<p>Note the use of <code>confess</code>, another freebie from Moose.  If the
-derived class hasn't defined a sound, I want to complain.  But since
-<code>Horse</code> defines <code>sound</code>, I'll never see that for a horse.  With this
-code, I can create my classic talking horse:</p>
+<p>Fixeu-vos en l'ús de <code>confess</code>, un altre regal de Moose. Si la classe derivada no ha definit un so, vull queixar-me. Però com que <code>Horse</code> defineix <code>sound</code>, no veure mai això per un cavall. Amb aquest codi puc crear el meu clàssic cavall parlador:</p>
 <pre>
   my $talking = Horse-&gt;new(name =&gt; 'Mr. Ed');
   $talking-&gt;speak; # says "Mr. Ed goes neigh"</pre>
-<p>So far, I'm still coding things that would be simple without Moose, so
-let's start diverging a bit to see the full power.  First, an
-<code>Animal</code> is really an abstract class, being used only to provide
-common attributes and methods to a concrete class (in this case, the
-horse class).  In Moose-terminology, this can best be described as a
-<em>role</em>.  A role is like a <em>mix-in</em>, providing a collection of
-attributes and methods that use those attributes.  A role never has
-any instances, because it's not a complete class.</p>
-<p>When we make <code>Animal</code> a role, we'll also get some additional support:</p>
+<p>Fins ara només estic programant coses que serien senzilles sense Moose, així que comencem a fer alguns canvis per veure'n tot el poder. Primer, un <code>Animal</code> és en realitat una classe abstracta, utilitzada només per proveïr atributs i mètodes comuns per a una classe concreta (en aquest cas, la classe cavall). En la terminologia de Moose això es descriu millor com un <em>rol</em>. Un rol és com un <em>mix-in</em>, que proveeix una col·lecció d'atributs i mètodes que utilitzen aquells atributs. Un rol mai té cap instància perquè no és una classe completa.</p>
+<p>Quan fem que <code>Animal</code> sigui un rol també obtenim suport addicional:</p>
 <pre>
   package Animal;
   use Moose::Role;
@@ -87,24 +67,15 @@ any instances, because it's not a complete class.</p>
   }
   requires 'sound';
   1;</pre>
-<p>Note that we've replaced the confess-including stub with <code>requires</code>.
-This informs Moose that this role must now be used with a class that
-provides the <code>sound</code> method, which will be checked at compile-time.
-To pull in a role, we use <code>with</code> rather than <code>extends</code>:</p>
+<p>Fixeu-vos que hem substituït l'stub que incloïa el confess per un <code>requires</code>. Això informa a Moose que les classes que usin aquest rol han de proveir el mètode <code>sound</code>, que serà verificat en temps de compilació. Per atorgar un rol utilitzem <code>with</code> enlloc d'<code>extends</code>:</p>
 <pre>
   package Horse;
   use Moose;
   with 'Animal';
   sub sound { 'neigh' }
   1;</pre>
-<p>Had we failed to include <code>sound</code>, we'd get notification very early
-on.  Cool.  At this point, <code>Horse</code> otherwise still works as before.</p>
-<p>What about those <code>with</code> and <code>requires</code> keywords?  Because they're
-defined by the <code>Moose</code> and <code>Moose::Role</code> imports, they remain as
-part of the package.  For the purists in us who don't like that kind
-of pollution, we can throw them away when we're done, using the
-correponding <code>no</code> keyword (similiar to <code>use strict</code> and <code>no
-strict</code>).  For example, we'd clean up <code>Horse.pm</code> with:</p>
+<p>Si ens haguéssim oblidat d'incloure <code>sound</code> hauríem rebut un avís de bon començament. Genial. En aquest punt, <code>Horse</code> segueix funcionant com abans.</p>
+<p>Què passa amb les paraules clau <code>with</code> i <code>requires</code>? Com que estan definits per les importacions de <code>Moose</code> i <code>Moose::Role</code>, romandran com a part del paquet. Per als puristes com nosaltres als que no ens agrada aquest tipus de pol·lució, podem eliminar-los quan hàgim acabat utilitzant la paraula clau <code>no</code> (de forma similar a <code>use strict</code> i <code>no strict</code>). Per exemple, podem netejar <code>Horse.pm</code> amb:</p>
 <pre>
   package Horse;
   use Moose;
@@ -112,7 +83,7 @@ strict</code>).  For example, we'd clean up <code>Horse.pm</code> with:</p>
   sub sound { 'neigh' }
   no Moose; # gets rid of scaffolding
   1;</pre>
-<p>And similarly, <code>Animal.pm</code> requires <code>no Moose::Role</code> at the end.</p>
+<p>I de forma similar, <code>Animal.pm</code> necessita <code>no Moose::Role</code> al final.</p>
 <p>Moose supports the notion of a default value.  Let's add in the default
 color, and make that a class responsibility as well:</p>
 <pre>

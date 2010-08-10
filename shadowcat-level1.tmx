@@ -89,7 +89,7 @@
         <seg>As I started playing with it, I exclaimed frequently that this framework would have saved me quite a bit of time on some past projects, such as the text I wrote for our Intermediate Perl course and book, parts of which have been included as the perlboot manpage in the distribution.</seg>
       </tuv>
       <tuv lang="CA">
-        <seg>Així que em vaig posar a jugar-hi, sovint vaig exclamar que aquest entorn de treball m'hauria estalviat un bona pila de temps en alguns projectes passats, com ara el text que vaig escriure per al nostre curs i llibre Intermediate Perl, algunes parts del qual s'han inclòs com la pàpina de manual perlboot a la distribució.</seg>
+        <seg>Així que em vaig posar a jugar-hi, sovint vaig exclamar que aquest entorn de treball m'hauria estalviat un bona pila de temps en alguns projectes passats, com ara el text que vaig escriure per al nostre curs i llibre Intermediate Perl, algunes parts del qual s'han inclòs com la pàgina de manual perlboot a la distribució.</seg>
       </tuv>
     </tu>
     <tu>
@@ -106,6 +106,286 @@
       </tuv>
       <tuv lang="CA">
         <seg>Primer crearem la classe cavall a Horse.pm que té un nom i un color:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Bringing in Moose defines has, which takes the name of an attribute along with its properties.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Incorporant Moose es defineix has, al qual se li passa el nom d'un atribut juntament amb les seves propietats.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here, we're saying that the two attributes are ``read/write''.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En aquest cas, diem que els dos atributs són de «lectura/escriptura».</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can now use this class:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ara podem utilitzar aquesta classe:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that I didn't have to define a new method: Moose does that for me.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fixeu-vos que no m'ha calgut definir un mètode new: Moose ho fa per mi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Now in the original text, Horse inherited from Animal.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En el text original Horse heretava d'Animal.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can do that rather simply.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem fer això molt fàcilment.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>In Animal.pm, we place:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Posem a Animal.pm:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>And then update our Horse.pm:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I aleshores actualitzem el nostre Horse.pm:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that extends here replaces the traditional use base and completely sets @ISA, rather than adding to it.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fixeu-vos que aquí extends substitueix el tradicional use base i fixa completament @ISA, enlloc d'afegir-hi un element.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>(It's possible that you might want to put this inside a BEGIN block, although I've not seen any examples requiring it yet.)</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>(És possible que vulgueu posar això dins d'un bloc BEGIN, tot i que encara no he vist cap exemple que ho necessiti).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>At this point, Horse and Animal are identical.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En aquest punt, Horse i Animal són idèntics.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>They can both be instantiated, and have the two given attributes.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Els dos es poden instanciar i se'ls pot assignar atributs.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>In the original example, what distinguished a horse was the sound it made, which we can add here:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En l'exemple original, el que distingia un cavall era el so que feia, cosa que podem afegir aquí:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>and then reference that in the common speak method in Animal:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>i aleshores fer-hi referència al mètode comú speak d'Animal:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note the use of confess, another freebie from Moose.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fixeu-vos en l'ús de confess, un altre regal de Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the derived class hasn't defined a sound, I want to complain.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si la classe derivada no ha definit un so, vull queixar-me.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>But since Horse defines sound, I'll never see that for a horse.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Però com que Horse defineix sound, no veure mai això per un cavall.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With this code, I can create my classic talking horse:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb aquest codi puc crear el meu clàssic cavall parlador:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>So far, I'm still coding things that would be simple without Moose, so let's start diverging a bit to see the full power.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fins ara només estic programant coses que serien senzilles sense Moose, així que comencem a fer alguns canvis per veure'n tot el poder.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>First, an Animal is really an abstract class, being used only to provide common attributes and methods to a concrete class (in this case, the horse class).</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Primer, un Animal és en realitat una classe abstracta, utilitzada només per proveïr atributs i mètodes comuns per a una classe concreta (en aquest cas, la classe cavall).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>In Moose-terminology, this can best be described as a role.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En la terminologia de Moose això es descriu millor com un rol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A role is like a mix-in, providing a collection of attributes and methods that use those attributes.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Un rol és com un mix-in, que proveeix una col·lecció d'atributs i mètodes que utilitzen aquells atributs.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A role never has any instances, because it's not a complete class.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Un rol mai té cap instància perquè no és una classe completa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When we make Animal a role, we'll also get some additional support:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Quan fem que Animal sigui un rol també obtenim suport addicional:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that we've replaced the confess-including stub with requires.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fixeu-vos que hem substituït l'stub que incloïa el confess per un requires.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This informs Moose that this role must now be used with a class that provides the sound method, which will be checked at compile-time.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Això informa a Moose que les classes que usin aquest rol han de proveir el mètode sound, que serà verificat en temps de compilació.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To pull in a role, we use with rather than extends:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per atorgar un rol utilitzem with enlloc d'extends:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Had we failed to include sound, we'd get notification very early on.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si ens haguéssim oblidat d'incloure sound hauríem rebut un avís de bon començament.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cool.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Genial.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>At this point, Horse otherwise still works as before.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En aquest punt, Horse segueix funcionant com abans.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>What about those with and requires keywords?</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Què passa amb les paraules clau with i requires?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Because they're defined by the Moose and Moose::Role imports, they remain as part of the package.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Com que estan definits per les importacions de Moose i Moose::Role, romandran com a part del paquet.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For the purists in us who don't like that kind of pollution, we can throw them away when we're done, using the correponding no keyword (similiar to use strict and no strict).</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per als puristes com nosaltres als que no ens agrada aquest tipus de pol·lució, podem eliminar-los quan hàgim acabat utilitzant la paraula clau no (de forma similar a use strict i no strict).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, we'd clean up Horse.pm with:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, podem netejar Horse.pm amb:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>And similarly, Animal.pm requires no Moose::Role at the end.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I de forma similar, Animal.pm necessita no Moose::Role al final.</seg>
       </tuv>
     </tu>
   </body>

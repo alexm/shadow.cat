@@ -6,25 +6,25 @@ Total:
 	Characters (without spaces)	28630
 	Characters (including spaces)	32338
 Remaining:
-	Segments	960
-	Words	4692
-	Characters (without spaces)	26298
-	Characters (including spaces)	29576
+	Segments	890
+	Words	3808
+	Characters (without spaces)	21476
+	Characters (including spaces)	23946
 Unique:
 	Segments	423
 	Words	2439
 	Characters (without spaces)	13595
 	Characters (including spaces)	15353
 Unique Remaining:
-	Segments	411
-	Words	2212
-	Characters (without spaces)	12429
-	Characters (including spaces)	13972
+	Segments	376
+	Words	1770
+	Characters (without spaces)	10018
+	Characters (including spaces)	11157
 
 Individual File Statistics:
 
 File Name	Total Words	Remaining Words	Total Characters (without spaces)	Remaining Characters (without spaces)	Total Characters (including spaces)	Remaining Characters (including spaces)
-col94.html	2573	2346	14315	13149	16169	14788
-col94_body.html	1814	1587	9807	8641	11466	10085
+col94.html	2573	1904	14315	10738	16169	11973
+col94_body.html	1814	1145	9807	6230	11466	7270
 col94_footer.html	102	102	587	587	680	680
 col94_header.html	657	657	3921	3921	4023	4023
