@@ -305,7 +305,7 @@
         <seg>Note that we've replaced the confess-including stub with <bpt i='0' x='0'>&lt;c0&gt;</bpt>requires<ept i='0'>&lt;/c0&gt;</ept>.</seg>
       </tuv>
       <tuv xml:lang="CA">
-        <seg>Fixeu-vos que hem substituït l'stub que incloïa el confess per un <bpt i='0' x='0'>&lt;c0&gt;</bpt>requires<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+        <seg>Fixeu-vos que hem substituït l'«stub» que incloïa el confess per un <bpt i='0' x='0'>&lt;c0&gt;</bpt>requires<ept i='0'>&lt;/c0&gt;</ept>.</seg>
       </tuv>
     </tu>
     <tu>
@@ -386,6 +386,382 @@
       </tuv>
       <tuv xml:lang="CA">
         <seg>I de forma similar, <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal.pm<ept i='0'>&lt;/c0&gt;</ept> necessita <bpt i='1' x='1'>&lt;c1&gt;</bpt>no Moose::Role<ept i='1'>&lt;/c1&gt;</ept> al final.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Moose supports the notion of a default value.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Moose ofereix suport per a la noció de valor predeterminat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's add in the default color, and make that a class responsibility as well:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Afegim el color predeterminat i fem que això també sigui responsabilitat de la classe:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the color isn't provided, the default color of the class will be consulted, and <bpt i='0' x='0'>&lt;c0&gt;</bpt>requires<ept i='0'>&lt;/c0&gt;</ept> ensures that the concrete class provides this default color.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Si no s'indica el color, es consultarà el color predeterminat de la classe i <bpt i='0' x='0'>&lt;c0&gt;</bpt>requires<ept i='0'>&lt;/c0&gt;</ept> garanteix que la classe concreta proveeix aquest color predeterminat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our derived animal classes now look like:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Les nostres classes derivades ara tenen aquest aspecte:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now we can count sheep as one of our implemented classes:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Ara «ovella» és una més de les nostres classes implementades:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Well, this is pretty straightforward.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Bé, això és força pim pam.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's solve a few other problems from the original material.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Anem a resoldre alguns dels altres problemes del material original.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>Mouse<ept i='0'>&lt;/c0&gt;</ept> class was special, because it extended the <bpt i='1' x='1'>&lt;c1&gt;</bpt>speak<ept i='1'>&lt;/c1&gt;</ept> method with an additional line of output.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>La classe <bpt i='0' x='0'>&lt;c0&gt;</bpt>Mouse<ept i='0'>&lt;/c0&gt;</ept> era especial perquè extenia el mètode <bpt i='1' x='1'>&lt;c1&gt;</bpt>speak<ept i='1'>&lt;/c1&gt;</ept> amb una línia addicional de sortida.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While we could use traditional <bpt i='2' x='2'>&lt;c2&gt;</bpt>SUPER::<ept i='2'>&lt;/c2&gt;</ept>-based method calls to call parent-class behaviors, this doesn't work with roles.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tot i que podríem utilitzar els mètodes tradicionals basats en <bpt i='2' x='2'>&lt;c2&gt;</bpt>SUPER::<ept i='2'>&lt;/c2&gt;</ept> per cridar els comportaments de la classe pare, això no funciona amb els rols.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(Roles don't end up in <bpt i='3' x='3'>&lt;c3&gt;</bpt>@ISA<ept i='3'>&lt;/c3&gt;</ept>, because they're ``glued in'' rather than ``tacked above''.)</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>(Els rols no acaben dins de <bpt i='3' x='3'>&lt;c3&gt;</bpt>@ISA<ept i='3'>&lt;/c3&gt;</ept> perquè estan «empegats per dins» enlloc d'«enganxats al damunt»).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Luckily, Moose provides the convenient <bpt i='0' x='0'>&lt;c0&gt;</bpt>after<ept i='0'>&lt;/c0&gt;</ept> call to append additional steps to an existing subroutine.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Afortunadament, Moose ofereix convenientment la crida <bpt i='0' x='0'>&lt;c0&gt;</bpt>after<ept i='0'>&lt;/c0&gt;</ept> per afegir passes addicionals al final d'una subrutina existent.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Moose does this by replacing the original subroutine with a new subroutine that calls the original routine and then calls the additional code.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Moose fa això substituint la subrutina original per una nova subrutina que crida l'orginal i tot seguit crida al codi addicional.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The context (list, scalar, or void) is properly preserved, as is the original return value.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El context (llista, escalar, o buit) es conserva de forma adequada, així com també el valor de retorn original.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our amended <bpt i='1' x='1'>&lt;c1&gt;</bpt>speak<ept i='1'>&lt;/c1&gt;</ept> looks something like:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El nostre <bpt i='1' x='1'>&lt;c1&gt;</bpt>speak<ept i='1'>&lt;/c1&gt;</ept> retocat té aquesta pinta:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This gives us a properly functioning mouse:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Això ens dóna un ratolí que funciona correctament:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>which results in:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>que dóna com a resultat:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can also use <bpt i='0' x='0'>&lt;c0&gt;</bpt>before<ept i='0'>&lt;/c0&gt;</ept> and <bpt i='1' x='1'>&lt;c1&gt;</bpt>around<ept i='1'>&lt;/c1&gt;</ept> to precede the original behavior or control the calling of the original behavior, as necessary.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>També podem utilitzar <bpt i='0' x='0'>&lt;c0&gt;</bpt>before<ept i='0'>&lt;/c0&gt;</ept> per a precedir el comportament original o <bpt i='1' x='1'>&lt;c1&gt;</bpt>around<ept i='1'>&lt;/c1&gt;</ept> per a controlar com es crida el comportament original, segons calgui.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, to allow <bpt i='2' x='2'>&lt;c2&gt;</bpt>name<ept i='2'>&lt;/c2&gt;</ept> to be used as both an accessor and still return <bpt i='3' x='3'>&lt;c3&gt;</bpt>an unnamed Horse<ept i='3'>&lt;/c3&gt;</ept> when used as a class method, we can ``around'' the resulting name accessor:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, per a permetre que <bpt i='2' x='2'>&lt;c2&gt;</bpt>name<ept i='2'>&lt;/c2&gt;</ept> s'utilitzi com un mètode accessor però que segueixi retornant <bpt i='3' x='3'>&lt;c3&gt;</bpt>an unnamed Horse<ept i='3'>&lt;/c3&gt;</ept> quan s'utilitzi com un mètode de classe, podem posar un «around» del mètode accessor resultant:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>has<ept i='0'>&lt;/c0&gt;</ept> creates the original behavior.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El <bpt i='0' x='0'>&lt;c0&gt;</bpt>has<ept i='0'>&lt;/c0&gt;</ept> crear el comportament original.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='1' x='1'>&lt;c1&gt;</bpt>around<ept i='1'>&lt;/c1&gt;</ept> intercepts the original subroutine name, causing the original coderef to be passed as the first parameter to this new subroutine, which we capture in <bpt i='2' x='2'>&lt;c2&gt;</bpt>$next<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>L'<bpt i='1' x='1'>&lt;c1&gt;</bpt>around<ept i='1'>&lt;/c1&gt;</ept> intercepta el nom de la subroutina original, fent que la referència al codi original es passi com a primer paràmetre d'aquesta nova subrutina, que nosaltres capturem a <bpt i='2' x='2'>&lt;c2&gt;</bpt>$next<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The original <bpt i='3' x='3'>&lt;c3&gt;</bpt>$self<ept i='3'>&lt;/c3&gt;</ept> is shifted away, and tested to see if it's an object or not, via <bpt i='4' x='4'>&lt;c4&gt;</bpt>blessed<ept i='4'>&lt;/c4&gt;</ept> (conveniently exported via Moose).</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Desencuem el <bpt i='3' x='3'>&lt;c3&gt;</bpt>$self<ept i='3'>&lt;/c3&gt;</ept> original i el verifiquem per veure si és un objecte o no, via <bpt i='4' x='4'>&lt;c4&gt;</bpt>blessed<ept i='4'>&lt;/c4&gt;</ept> (exportat per Moose convenientment).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For a blessed object, we get the original behavior (a getter or setter), but for a class, we'll get the literal string.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per a un objecte obtenim el comportament original (un «getter» o «setter»), però per a una classe obtindrem la cadena literal.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>What if we never gave our animal a name?</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Què passa si no li posem un nom al nostre animal?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll get warnings about undefined values.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Obtindrem avisos sobre valors indefinits.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can give a default name just as we did a default color:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem assignar un nom predeterminat tal com vam fer amb el color predeterminat:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Again, we'd want that <bpt i='0' x='0'>&lt;c0&gt;</bpt>around<ept i='0'>&lt;/c0&gt;</ept> immediately following this step.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Novament, voldríem aquell <bpt i='0' x='0'>&lt;c0&gt;</bpt>around<ept i='0'>&lt;/c0&gt;</ept> immediatament després d'aquest pas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we don't want people setting the color after the initial instance creation, we can declare the attribute as read-only:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Si no volem que la gent canviï el color després de la creació inicial de la instància, declarem l'atribut no modificable:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now an attempt to set the color is aborted with <bpt i='0' x='0'>&lt;c0&gt;</bpt>Cannot assign a value to a read-only accessor...<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Ara un intent de canviar el color s'avortarà amb <bpt i='0' x='0'>&lt;c0&gt;</bpt>Cannot assign a value to a read-only accessor...<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we really wanted to have a way to occasionally set the color, we can define a separately named <bpt i='1' x='1'>&lt;e1&gt;</bpt>writer<ept i='1'>&lt;/e1&gt;</ept>:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Si realment volíem una manera de canviar el color ocasionalment, podem definir a banda un anomenat <bpt i='1' x='1'>&lt;e1&gt;</bpt>escriptor<ept i='1'>&lt;/e1&gt;</ept>:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Thus, we can't change the color of a mouse directly:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>D'aquesta manera no podem canviar el color d'un ratolí directament:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But we can use our private name instead:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Però en canvi podem utilitzar un mètode privat:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By using a long name, we're less likely to accidentally call it, except where we intentionally want to change the color.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tot utilitzant un nom llarg és menys probable que el cridem accidentalment, a menys que tinguem la intenció de canviar el color.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's create a <bpt i='0' x='0'>&lt;c0&gt;</bpt>RaceHorse<ept i='0'>&lt;/c0&gt;</ept> by adding ``race features'' to a <bpt i='1' x='1'>&lt;c1&gt;</bpt>Horse<ept i='1'>&lt;/c1&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Anem a crear un <bpt i='0' x='0'>&lt;c0&gt;</bpt>RaceHorse<ept i='0'>&lt;/c0&gt;</ept> afegint «característiques de carrera» a un <bpt i='1' x='1'>&lt;c1&gt;</bpt>Horse<ept i='1'>&lt;/c1&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>First, we define the ``race features'' as, yes, another role:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Primer definim «característiques de carrera» com, sí, un altre rol:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that since <bpt i='0' x='0'>&lt;c0&gt;</bpt>has<ept i='0'>&lt;/c0&gt;</ept> is just a subroutine call, we can use traditional Perl control structures (here, a <bpt i='1' x='1'>&lt;c1&gt;</bpt>foreach<ept i='1'>&lt;/c1&gt;</ept> loop).</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Com que <bpt i='0' x='0'>&lt;c0&gt;</bpt>has<ept i='0'>&lt;/c0&gt;</ept> és només una crida a una subrutina, fixeu-vos que podem utilitzar estructures de control tradicionals de Perl (aquí, un bucle <bpt i='1' x='1'>&lt;c1&gt;</bpt>foreach<ept i='1'>&lt;/c1&gt;</ept>).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With a bit of code, we've added another four attributes.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Amb una mica de codi hem afegit uns altres quatre atributs.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The initial value of <bpt i='2' x='2'>&lt;c2&gt;</bpt>0<ept i='2'>&lt;/c2&gt;</ept> means we don't have to write separate initialization code in our constructor.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El valor inicial <bpt i='2' x='2'>&lt;c2&gt;</bpt>0<ept i='2'>&lt;/c2&gt;</ept> significa que no ens caldrà escriure per separat codi d'inicialització al nostre constructor.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Next, we can add some accessors:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tot seguit podem afegir alguns mètodes accessors:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each call to <bpt i='0' x='0'>&lt;c0&gt;</bpt>won<ept i='0'>&lt;/c0&gt;</ept> increments the number of wins.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Cada crida a <bpt i='0' x='0'>&lt;c0&gt;</bpt>won<ept i='0'>&lt;/c0&gt;</ept> incrementa el número de victòries.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This would be simpler if we presumed that these objects are implemented as hashes (which they are by default), as:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Això seria més senzill si assumíssim que aquests objectes s'implementen amb taules de dispersió (per defecte és així), com ara:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, by using the public interface (a method call), we could change the implementation later to inside-out objects or array-based objects without breaking this code.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tanmateix, utilitzant la interfície pública (una crida al mètode) podríem canviar més endavant la implementació amb objectes capgirats o objectes basats en matrius sense trencar aquest codi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is especially important when creating a generic role, which could be mixed in to any kind of object.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Això és especialment important quan es crea un rol genèric, que es podria mesclar amb qualsevol tipus d'objecte.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To create the race horse, we just mix a horse with a racer:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per a crear la carrera de cavalls només cal que mesclem un cavall amb un corredor:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And now we can ride the ponies:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I ara ja podem cavalcar els ponis:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So far, I've just scratched the surface of what <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> provides.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Fins ara només he rascat la superfície del que proporciona <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Next month, I'll look at some of the more advanced features of <bpt i='1' x='1'>&lt;c1&gt;</bpt>Moose<ept i='1'>&lt;/c1&gt;</ept> that help keep the complex things relatively simple.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El proper mes miraré algunes de les característiques més avançades de <bpt i='1' x='1'>&lt;c1&gt;</bpt>Moose<ept i='1'>&lt;/c1&gt;</ept> que ajuden a mantenir les coses complexes de manera relativament simple.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Until then, enjoy!</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Fins aleshores, gaudiu!</seg>
       </tuv>
     </tu>
   </body>

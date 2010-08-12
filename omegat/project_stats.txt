@@ -1,30 +1,30 @@
-Project Statistics
+Estadístiques del projecte
 
 Total:
 	Segments	984
-	Words	5146
-	Characters (without spaces)	28630
-	Characters (including spaces)	32338
-Remaining:
-	Segments	890
-	Words	3808
-	Characters (without spaces)	21476
-	Characters (including spaces)	23946
-Unique:
+	Paraules	5146
+	Caràcters (sense espais)	28630
+	Caràcters (amb espais)	32338
+Restants:
+	Segments	796
+	Paraules	2480
+	Caràcters (sense espais)	14522
+	Caràcters (amb espais)	15760
+Únics:
 	Segments	423
-	Words	2439
-	Characters (without spaces)	13595
-	Characters (including spaces)	15353
-Unique Remaining:
-	Segments	376
-	Words	1770
-	Characters (without spaces)	10018
-	Characters (including spaces)	11157
+	Paraules	2439
+	Caràcters (sense espais)	13595
+	Caràcters (amb espais)	15353
+Únics restants:
+	Segments	329
+	Paraules	1106
+	Caràcters (sense espais)	6541
+	Caràcters (amb espais)	7064
 
-Individual File Statistics:
+Estadístiques per fitxer:
 
-File Name	Total Words	Remaining Words	Total Characters (without spaces)	Remaining Characters (without spaces)	Total Characters (including spaces)	Remaining Characters (including spaces)
-col94.html	2573	1904	14315	10738	16169	11973
-col94_body.html	1814	1145	9807	6230	11466	7270
+Nom de fitxer	Paraules totals	Paraules restants	Caràcters totals (sense espais)	Caràcters restants (sense espais)	Caràcters totals (amb espais)	Caràcters restants (amb espais)
+col94.html	2573	1240	14315	7261	16169	7880
+col94_body.html	1814	481	9807	2753	11466	3177
 col94_footer.html	102	102	587	587	680	680
 col94_header.html	657	657	3921	3921	4023	4023
