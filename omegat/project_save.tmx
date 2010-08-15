@@ -764,5 +764,645 @@
         <seg>Fins aleshores, gaudiu!</seg>
       </tuv>
     </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>[suggested title: ``The Moose is Flying (part 2)'']</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>[títol suggerit: «El Moose està volant (2a part)»]</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Last month, I introduced the &lt;c0&gt;Moose&lt;/c0&gt; object system by walking through the code developed in the &lt;e1&gt;perlboot&lt;/e1&gt; manpage, rewriting it to use Moose.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El mes passat, vaig introduir el sistema d'objectes &lt;c0&gt;Moose&lt;/c0&gt; recorrent el codi desenvolupat a la pàgina de manual de &lt;e1&gt;perlboot&lt;/e1&gt; , reescrivint-ho per utilitzar Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Continuing from that discussion, let's look at some of the features I didn't cover last month.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Continuant a partir d'aquella discussió, fem un cop d'ull a algunes de les característiques que no vaig cobrir el mes passat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Our &lt;c0&gt;Animal&lt;/c0&gt; role included attributes of &lt;c1&gt;name&lt;/c1&gt;, and &lt;c2&gt;color&lt;/c2&gt;, and actions of &lt;c3&gt;speak&lt;/c3&gt; and &lt;c4&gt;eat&lt;/c4&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El nostre rol &lt;c0&gt;Animal&lt;/c0&gt; incloïa atributs de &lt;c1&gt;name&lt;/c1&gt; i &lt;c2&gt;color&lt;/c2&gt;, i mètodes de &lt;c3&gt;speak&lt;/c3&gt; i &lt;c4&gt;eat&lt;/c4&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can add a birthdate attribute to the mix with:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem afegir un atribut d'aniversari a la barreja amb:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>As we don't want to be able to change the birthdate, we'll make it read-only.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Com que no volem que es pugui canviar la data d'aniversari, farem que sigui no modificable.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>By default, this attribute accepts any scalar, so these are all equally valid:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per defecte, aquest atribut accepta qualsevol escalar, així que aquests són tots equivalentment vàlids:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can get a bit of help from Moose to narrow down the permissible type of this new birthdate attribute using Moose's typing system:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem aconseguir una mica d'ajuda de Moose per reduir el tipus permès d'aquest nou atribut aniversari utilitzant el sistema de tipus de Moose:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The &lt;c0&gt;isa&lt;/c0&gt; parameter here declares that the &lt;c1&gt;born&lt;/c1&gt; parameter must be a DateTime object, or at least something that responds true to &lt;c2&gt;UNIVERSAL::isa($thing, &quot;DateTime&quot;)&lt;/c2&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El paràmetre &lt;c0&gt;isa&lt;/c0&gt; declara aquí que el paràmetre  &lt;c1&gt;born&lt;/c1&gt;  ha de ser un objecte DateTime, o com a mínim algun tipus que respongui cert a &lt;c2&gt;UNIVERSAL::isa($thing, &quot;DateTime&quot;)&lt;/c2&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Now, if we try to put anything in this &lt;c0&gt;born&lt;/c0&gt; attribute other than a &lt;c1&gt;DateTime&lt;/c1&gt;, we get a run-time error.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ara, si intentem assignar qualsevol cosa a l'atribut &lt;c0&gt;born&lt;/c0&gt; que no sigui un &lt;c1&gt;DateTime&lt;/c1&gt;, obtenim un error en temps d'execució.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>So, this fails:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Així doncs, això falla:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>But this succeeds:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Però això funciona:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The &lt;c0&gt;DateTime&lt;/c0&gt; string for &lt;c1&gt;isa&lt;/c1&gt; refers here to the Perl class.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>La cadena &lt;c0&gt;DateTime&lt;/c0&gt; per &lt;c1&gt;isa&lt;/c1&gt; es refereix aquí a la classe de Perl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>However, we can also define this as an artificial Moose type:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Tanmateix, també podem definir això com un tipus de Moose artificial:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This works like before, but now identifies &lt;c0&gt;DateTime&lt;/c0&gt; as a Moose-type.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Això funciona com abans, però ara identifica &lt;c0&gt;DateTime&lt;/c0&gt; com un tipus de Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The type is created by starting with any &lt;c1&gt;Object&lt;/c1&gt;, and then requiring that this object pass the additional qualification of being a subclass of Perl's &lt;c2&gt;DateTime&lt;/c2&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El tipus es crea començant amb qualsevol &lt;c1&gt;Object&lt;/c1&gt; i després requering que aquest objecte passi la qualificació adicional de ser una subclasse de &lt;c2&gt;DateTime&lt;/c2&gt; de Perl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>At this point, we could continue to use this Moose-style DateTime type as we had before.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En aquest punt, podem continuar utilitzant aquest DateTime de Moose com ho fèiem abans.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>But once we've done this, we can further subtype the type.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Una vegada hem fet això, podem derivar un subtipus del tipus.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, we can require that the date be a historical date (before now):</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, podem requerir que la data sigui històrica (prèvia al present):</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Now, not just any DateTime will do.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ara no funcionarà qualsevol DateTime.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It has to be something that isn't in the future.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ha de ser algun moment que no sigui al futur.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The expression in &lt;c0&gt;where&lt;/c0&gt; can be any expression returning a true/false value, using &lt;c1&gt;$_&lt;/c1&gt; as a proxy for the object in question.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>L'expressió al &lt;c0&gt;where&lt;/c0&gt; pot ser qualsevol expressió que retorni un valor cert/fals, utilitzant &lt;c1&gt;$_&lt;/c1&gt; com a proxy per a l'objecte en qüestió.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It'd be easier if we could still use casual forms like &lt;c0&gt;yesterday&lt;/c0&gt; and &lt;c1&gt;3/14/1929&lt;/c1&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Seria més senzill encara si poguèssim utilitzar expressions informals com &lt;c0&gt;yesterday&lt;/c0&gt; i &lt;c1&gt;3/14/1929&lt;/c1&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>These are both understood by &lt;c2&gt;Date::Manip&lt;/c2&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>&lt;c2&gt;Date::Manip&lt;/c2&gt; enten aquestes dues.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We could parse the strings with &lt;c3&gt;Date::Manip&lt;/c3&gt;, then pull out the component values and hand them to &lt;c4&gt;DateTime&lt;/c4&gt;, but luckily, there's already a module to do that: &lt;c5&gt;DateTime::Format::DateManip&lt;/c5&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem analitzar les cadenes amb &lt;c3&gt;Date::Manip&lt;/c3&gt;, extreure els valors dels components i després entregar-los a &lt;c4&gt;DateTime&lt;/c4&gt;, però afortunadament, ja hi ha un mòdul que fa això: &lt;c5&gt;DateTime::Format::DateManip&lt;/c5&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Not bad.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>No està malament.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Our newbie horse is born yesterday, as we expect.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El nostre aprenent cavall va nèixer ahir, tal com esperàvem.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>But it'd be nice to just drop &lt;c0&gt;yesterday&lt;/c0&gt; into the slot and have it do all of that for us.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Però estaria bé simplement posar &lt;c0&gt;yesterday&lt;/c0&gt; al paràmetre i deixar que ho faci tot per nosaltres.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>And with &lt;e1&gt;coercions&lt;/e1&gt;, we can.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I amb &lt;e1&gt;coercions&lt;/e1&gt;, podem fer-ho.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Since passing a simple string as the birthtime is illegal, we can inform Moose that it should take that string and run it through &lt;c0&gt;DateTime::Format::DateManip&lt;/c0&gt; automatically:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Com que passar una cadena com a aniversari no està permés, podem indicar a Moose que agafi la cadena i la passi per  &lt;c0&gt;DateTime::Format::DateManip&lt;/c0&gt; automàticament:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The &lt;c0&gt;via&lt;/c0&gt; code block takes &lt;c1&gt;$_&lt;/c1&gt; as the input value, which is expected to be a string (&lt;c2&gt;Str&lt;/c2&gt;).</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El bloc &lt;c0&gt;via&lt;/c0&gt; agafa &lt;c1&gt;$_&lt;/c1&gt; com un valor d'entrada, que s'espera que sigui una cadena (&lt;c2&gt;Str&lt;/c2&gt;).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The last expression evaluated in the code is the new &lt;c3&gt;HistoricalDateTime&lt;/c3&gt; value.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>L'última expressió avaluada al codi és el nou valor &lt;c3&gt;HistoricalDateTime&lt;/c3&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We then permit this coercion to be used by adding &lt;c4&gt;coerce&lt;/c4&gt; into the attribute declaration:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Després permetem l'ús d'aquesta coacció afegint &lt;c4&gt;coerce&lt;/c4&gt;  a la declaració de l'atribut:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Now, the &lt;c0&gt;born&lt;/c0&gt; slot accepts either an explicit &lt;c1&gt;DateTime&lt;/c1&gt; as before, or a simple string.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ara el paràmetre &lt;c0&gt;born&lt;/c0&gt; accepta o bé un &lt;c1&gt;DateTime&lt;/c1&gt; explícit com abans, o bé una cadena simple.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The string must be acceptable to &lt;c2&gt;Date::Manip&lt;/c2&gt;, which will be used to convert the string into a &lt;c3&gt;DateTime&lt;/c3&gt; object as our object is created.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>La cadena ha de ser acceptable per &lt;c2&gt;Date::Manip&lt;/c2&gt;, que serà utilitzat per convertir la cadena a un objecte &lt;c3&gt;DateTime&lt;/c3&gt; quan el nostre objecte sigui creat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Also, because the type constraint is still in place, the verification to ensure the result is a historical date is still active.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>A més, com que la coacció de tipus està a lloc, la verificació per assegurar que el resultat és una data històrica encara està activa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Besides the named classes and &lt;c0&gt;Str&lt;/c0&gt;, &lt;c1&gt;Moose::Util::TypeConstraints&lt;/c1&gt; also establishes types of things like &lt;c2&gt;Bool&lt;/c2&gt; and &lt;c3&gt;HashRef&lt;/c3&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>A més dels noms de les classes i &lt;c0&gt;Str&lt;/c0&gt;, &lt;c1&gt;Moose::Util::TypeConstraints&lt;/c1&gt; també estableix els tipus de coses com &lt;c2&gt;Bool&lt;/c2&gt; i &lt;c3&gt;HashRef&lt;/c3&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We could even have multiple coercions defined, as long as they are distinct.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fins i tot podríem tenir múltiples coaccions definides, sempre i quan siguin diferents.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, we could use a hashref in the birthtime slot to indicate that we are passing key/value pairs to be handed to a &lt;c0&gt;DateTime&lt;/c0&gt; constructor directly:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, podem utilitzar una referència a una taula de dispersió al paràmetre aniversari per indicar que estem passant parells clau/valor perquè siguin entregats directament a un constructor &lt;c0&gt;DateTime&lt;/c0&gt;:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>And now we can use a hashref to define the birthdate:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I ara podem definir una referència a una taula de dispersió per definir l'aniversari:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the value for &lt;c0&gt;born&lt;/c0&gt; is a &lt;c1&gt;DateTime&lt;/c1&gt;, it's used directly.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si el valor per a &lt;c0&gt;born&lt;/c0&gt; és un &lt;c1&gt;DateTime&lt;/c1&gt;, s'utilitza directament.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If it's a string, it's passed to &lt;c2&gt;DateTime::Format::DateManip&lt;/c2&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si és una cadena, es passa a &lt;c2&gt;DateTime::Format::DateManip&lt;/c2&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>And if it's a hashref, it's passed directly as a flattened list to the &lt;c3&gt;DateTime&lt;/c3&gt; constructor.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I si és una referència a una taula de dispersió, es passa directament com una llista aplanada al constructor &lt;c3&gt;DateTime&lt;/c3&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Very cool.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Genial.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The value we specify for a &lt;c0&gt;default&lt;/c0&gt; is subject to the same coercions and type checking.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El valor que especifiquem per a &lt;c0&gt;default&lt;/c0&gt; està subjecte a les mateixes coaccions i comprovacions de tipus.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can update &lt;c1&gt;born&lt;/c1&gt; as:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem actualitzar &lt;c1&gt;born&lt;/c1&gt; a:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>And now our animals default to being ``born yesterday''.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I ara, el valor per defecte dels animals a ``nascut ahir''.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that the default value is still subject to the type constraints, so if we replace &lt;c0&gt;yesterday&lt;/c0&gt; with &lt;c1&gt;tomorrow&lt;/c1&gt;, the default value will be rejected properly.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Observeu que el valor per defecte encara està subjecte a les restriccions de tipus, per tant si substituïm &lt;c0&gt;yesterday&lt;/c0&gt; per &lt;c1&gt;tomorrow&lt;/c1&gt;, el valor per defecte serà rebutjat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that the coercion happens as each object is created, so a default value of &lt;c2&gt;one minute ago&lt;/c2&gt; will give us a new time each time it is called.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Observeu que la coacció passa a mesura que cada objecte es crea, per tant el valor per defecte &lt;c2&gt;one minute ago&lt;/c2&gt; ens donarà una data diferent cada vegada que sigui cridat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>While we're on things we can do to attributes, another interesting item is &lt;c0&gt;lazy&lt;/c0&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Mentre estudiem què podem fer als atributs, un altre element interessant és &lt;c0&gt;lazy&lt;/c0&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the default value is expensive to compute, we can say ``don't really do this until you need to do it''.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si el valor per defecte és car de calcular, podem dir ``no facis això fins que ho necessitis''.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, turning &lt;c1&gt;yesterday&lt;/c1&gt; into a DateTime is slightly expensive, so we can flag that as lazy:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, convertir &lt;c1&gt;yesterday&lt;/c1&gt; a un objecte DateTime és una mica car, així que ho podem marcar com lazy:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Speaking of great support, as I was writing that last paragraph, I noticed a bug in the result, and chatting with Stevan on IRC got it fixed before I could turn this article in.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>I parlant de suport fantàstic, mentre escrivia aquest últim pàrraf vaig descobrir un error de programació, i commentar-ho amb Stevan a l'IRC ho va solucionar abans que jo entregués l'article.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Yeay.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Visca.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Anything built with &lt;c0&gt;Moose&lt;/c0&gt; has a very high degree of introspection available.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Qualsevol cosa construïda amb &lt;c0&gt;Moose&lt;/c0&gt; té disponible un grau molt alt d'introspecció.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, we can ask one of our animal friends to give us the &lt;c1&gt;meta&lt;/c1&gt; object, with which we can make further requests:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, podem demanar a un dels nostres amics animals que ens doni l'objecte &lt;c1&gt;meta&lt;/c1&gt;, amb el què podrem fer més peticions:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can ask the horse for the &lt;e2&gt;roles&lt;/e2&gt;:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem demanar al cavall per els &lt;e2&gt;roles&lt;/e2&gt;:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>In this case, we see that we've mixed in one role (of type &lt;c0&gt;Moose::Meta::Role&lt;/c0&gt;, and get the name with:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>En aquest cas, veiem que hem obtingut un rol (de tipus &lt;c0&gt;Moose::Meta::Role&lt;/c0&gt;), i aconseguit el nom amb:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>which gives us &lt;c0&gt;Animal&lt;/c0&gt; as we might expect.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>cosa que ens dona un &lt;c0&gt;Animal&lt;/c0&gt; tal com esperàvem.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can also ask the meta object for all applicable methods:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem demanar a l'objecte meta tots els mètodes aplicables:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>which returns</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>cosa que retorna</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Nice.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Genial.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Not sure what BEGIN is doing in there, but the rest are things that we've defined.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>No estic segur de què fa BEGIN aquí, però la resta són elements que hem definit.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Many of these methods relate to the attributes, but we'd can query those definitively using &lt;c0&gt;compute_all_applicable_attributes&lt;/c0&gt; instead:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Molts d'aquests mètodes es relacionen amb atributs, però podem demanar aquests definitivament utilitzant &lt;c0&gt;compute_all_applicable_attributes&lt;/c0&gt;:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The result is a set of &lt;c0&gt;Moose::Meta::Attribute&lt;/c0&gt; objects.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El resultat és un conjunt d'objectes &lt;c0&gt;Moose::Meta::Attribute&lt;/c0&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can map them through &lt;c1&gt;name&lt;/c1&gt; as before to get the names:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Podem utilitzar el «map« sobre &lt;c1&gt;name&lt;/c1&gt; com abans per aconseguir els noms:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>We can also see if they have setters:</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>També podem veure si tenen «setters»:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that only &lt;c0&gt;color&lt;/c0&gt; has a setter: the other two are read-only, so this makes sense.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Observeu que només &lt;c0&gt;color&lt;/c0&gt; té un «setter»: els altres dos no són modificables, així que això té sentit.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>As noted above, Moose is still being actively developed, but is &lt;e0&gt;production ready&lt;/e0&gt; as long as you stick with things that work.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Tal com s'ha comentat abans, Moose encara està sent desenvolupat de forma activa, però és &lt;e0&gt;production ready&lt;/e0&gt; mentre us mantingueu en les coses que funcionen.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You'll find the latest Moose in the CPAN, along with some other core plugins, typically in the &lt;c1&gt;MooseX&lt;/c1&gt; namespace.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Trobareu l'últim Moose al CPAN, juntament amb algun altre complement base, normalment a l'espai de noms &lt;c1&gt;MooseX&lt;/c1&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, &lt;c0&gt;MooseX::Getopt&lt;/c0&gt; allows you to define your &lt;c1&gt;@ARGV&lt;/c1&gt; processing using type coercion, type constraints, and all that jazz.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, &lt;c0&gt;MooseX::Getopt&lt;/c0&gt; us permet definir el vostre procés de &lt;c1&gt;@ARGV&lt;/c1&gt; utilitzant coacció de tipus, restriccions de tipus, i totes aquestes coses.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>I haven't had time to play with that yet, but it's on my to-do list, so perhaps I'll cover that in a future column.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>No he tingut temps per jugar-hi encara, però està a la meva llista de coses pendents, així que potser en parlaré a una columna futura.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Similarly, &lt;c0&gt;MooseX::Object::Pluggable&lt;/c0&gt; makes it easy to write classes that are &lt;e1&gt;pluggable&lt;/e1&gt;, meaning that they can work well with plugins that define additional methods and attributes.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>De forma similar, &lt;c0&gt;MooseX::Object::Pluggable&lt;/c0&gt; simplifica l'escriptura de classes que són &lt;e1&gt;pluggable&lt;/e1&gt;, que significa que poden treballar bé amb complements que defineixen mètodes i atributs adicionals.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>(Think of a generic web server or IRC bot object that has individually selectable additional behaviors.) Again, I'm just noticing these, and they look like they are worthy of their own descriptions later.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>(Penseu en un servidor web genèric o un «bot« IRC que té comportaments adicionals seleccionables individualment.) De nou, m'estic adonant ara d'aquests, i sembla que valgui la pena fer-ne una descripció especial més tard.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Also note that &lt;c0&gt;Moose&lt;/c0&gt; is itself built on &lt;c1&gt;Class::MOP&lt;/c1&gt;, which is a framework for making class frameworks.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Observeu a més que el mateix &lt;c0&gt;Moose&lt;/c0&gt; està construit sobre &lt;c1&gt;Class::MOP&lt;/c1&gt;, que és un entorn de treball per crear entorns de treball de classes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Perhaps other projects besides Moose will be using Class::MOP as a starting point as well.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Potser altres projectes a més de Moose també utilitzaran Class::MOP com a punt de partida.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, the infrastructure of &lt;c2&gt;Class::Prototyped&lt;/c2&gt; (which I use in my own &lt;c3&gt;CGI::Prototype&lt;/c3&gt;) might be built on &lt;c4&gt;Class::MOP&lt;/c4&gt;, giving it more flexibility and robustness.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, l'infraestructura de &lt;c2&gt;Class::Prototyped&lt;/c2&gt; (que utilitzo al meu &lt;c3&gt;CGI::Prototype&lt;/c3&gt;) podria construir-se sobre &lt;c4&gt;Class::MOP&lt;/c4&gt;, proporcionant més flexibilitat i robustesa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>I hope you've enjoyed this two-part introduction to &lt;c0&gt;Moose&lt;/c0&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Espero que hagueu gaudit d'aquesta introducció en dues parts a &lt;c0&gt;Moose&lt;/c0&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Have fun playing with a production-ready flexible object-building system.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Divertiu-vos jugant amb un sistema de construcció d'objectes flexible preparat per a producció.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Until next time, enjoy!</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fins aleshores, gaudiu!</seg>
+      </tuv>
+    </tu>
   </body>
 </tmx>

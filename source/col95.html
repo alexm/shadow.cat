@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>The Moose is Flying (part 2) (Jul 07)</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="Perl!">
+<!--
+  template modtime is 08:05:54 11-May-2007
+-->
+
+<LINK REL="StyleSheet" HREF="/style.css" TYPE="text/css" MEDIA="screen">
+</head>
+<body bgcolor="white">
+
+<div id="header">
+	<a href="index.html"><img src="/stonehenge-logo.png" border="0" 
+		widht="340" height="75"></a><a href="http://www.theperlreview.com"><img
+        style="margin-left: 50px"
+        src="/images/tpr-banner.png"
+        alt="The Perl Review: the magazine of Perl"
+        height="53"
+        width="350"
+        border="0"></a>         <br/>
+	<h2 id="tagline">Worldwide training and consulting by Perl experts</h2>
+</div>  
+
+<div id="nav">
+<a class="jumptocontent" href="#content">Jump to content...</a>
+<ul class="navbars">
+<li class="navbar"><p class="navbarlabel"></p>
+<ul class="navbarbuttons"><li class="navbaractivebutton"><a href="/merlyn/columns.html"><b>Columns</b></a>
+<li class="navbarbutton"><a href="/merlyn/pictures.html">Pictures</a>
+<li class="navbarbutton"><a href="/merlyn/">Randal</a>
+</ul>
+<li class="navbar"><p class="navbarlabel">Columns by Randal</p>
+<ul class="navbarbuttons"><li class="navbaractivebutton"><a href="/merlyn/LinuxMag/"><b>LM Columns</b></a>
+<li class="navbarbutton"><a href="/merlyn/PerlJournal/">PJ Columns</a>
+<li class="navbarbutton"><a href="/merlyn/UnixReview/">UR Columns</a>
+<li class="navbarbutton"><a href="/merlyn/WebTechniques/">WT Columns</a>
+</ul>
+<li class="navbar"><p class="navbarlabel">LM Columns by Randal</p>
+<ul class="navbarbuttons"><li class="navbarbutton"><a href="/merlyn/LinuxMag/col01.html">01</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col02.html">02</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col03.html">03</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col04.html">04</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col05.html">05</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col06.html">06</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col07.html">07</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col08.html">08</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col09.html">09</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col10.html">10</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col11.html">11</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col12.html">12</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col13.html">13</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col14.html">14</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col15.html">15</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col16.html">16</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col17.html">17</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col18.html">18</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col19.html">19</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col20.html">20</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col21.html">21</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col22.html">22</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col23.html">23</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col24.html">24</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col25.html">25</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col26.html">26</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col27.html">27</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col28.html">28</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col29.html">29</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col30.html">30</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col31.html">31</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col32.html">32</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col33.html">33</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col34.html">34</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col35.html">35</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col36.html">36</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col37.html">37</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col38.html">38</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col39.html">39</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col40.html">40</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col41.html">41</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col42.html">42</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col43.html">43</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col44.html">44</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col45.html">45</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col46.html">46</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col47.html">47</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col48.html">48</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col49.html">49</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col50.html">50</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col51.html">51</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col52.html">52</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col53.html">53</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col54.html">54</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col55.html">55</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col56.html">56</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col57.html">57</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col58.html">58</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col59.html">59</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col60.html">60</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col61.html">61</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col62.html">62</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col63.html">63</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col64.html">64</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col65.html">65</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col66.html">66</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col67.html">67</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col68.html">68</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col69.html">69</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col70.html">70</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col71.html">71</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col72.html">72</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col73.html">73</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col74.html">74</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col75.html">75</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col76.html">76</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col77.html">77</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col78.html">78</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col79.html">79</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col80.html">80</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col81.html">81</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col82.html">82</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col83.html">83</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col84.html">84</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col85.html">85</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col86.html">86</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col87.html">87</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col88.html">88</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col89.html">89</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col90.html">90</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col91.html">91</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col92.html">92</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col93.html">93</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col94.html">94</a>
+<li class="navbaractivebutton"><a href="/merlyn/LinuxMag/col95.html"><b>95</b></a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col96.html">96</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col97.html">97</a>
+<li class="navbarbutton"><a href="/merlyn/LinuxMag/col98.html">98</a>
+</ul>
+</ul>
+<a class="jumptocontent" name="content"></a>
+<hr><!-- Search Google -->
+<div align="center">
+<FORM method="GET" action="http://www.google.com/custom">
+<A class="google" HREF="http://www.google.com/search">
+<IMG cclass="google" SRC=http://www.google.com/logos/Logo_40wht.gif border=0 ALT=Google align=middle></A><br />
+<INPUT TYPE=text name=q size=15 maxlength=255 value=""><br />
+<INPUT type=submit name=sa VALUE="Search Stonehenge">
+<INPUT type=hidden name=cof VALUE="S:http://www.stonehenge.com;AH:center;AWFID:c32c3e920bca5918;">
+<input type=hidden name=domains value="stonehenge.com"><input type=hidden name=sitesearch value="stonehenge.com">
+</FORM>
+</div>
+<!-- Search Google --><hr><small>Most-recently modified on
+08:05:54 11-May-2007.</small>
+</div>
+
+<div id="content">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-5232500565828778";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="2524837445";
+google_color_border = "FF4500";
+google_color_bg = "FFEBCD";
+google_color_link = "DE7008";
+google_color_url = "E0AD12";
+google_color_text = "8B4513";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br>
+<h2>Copyright Notice</h2>
+This text is copyright by InfoStrada Communications, Inc., and is used with
+their permission.  Further distribution or use is not permitted.
+<p>This text has appeared in an edited form in
+<cite>Linux Magazine</cite> magazine.
+However, the version you are reading here is as the author
+originally submitted the article for publication, not after their
+editors applied their creativity.
+<p>Please read all the information in the <a href="./">table of contents</a>
+before using this article.
+
+<tr bgcolor="#ffffff"><td bgcolor="#ffffff">
+<p>
+</p>
+<h1><a name="linux_magazine_column_95__jul_2007_">Linux Magazine Column 95 (Jul 2007)</a></h1>
+<p>[suggested title: ``The Moose is Flying (part 2)'']</p>
+<p>Last month, I introduced the <code>Moose</code> object system by walking through
+the code developed in the <em>perlboot</em> manpage, rewriting it to use
+Moose.  Continuing from that discussion, let's look at some of the
+features I didn't cover last month.</p>
+<p>Our <code>Animal</code> role included attributes of <code>name</code>, and <code>color</code>,
+and actions of <code>speak</code> and <code>eat</code>.  We can add a birthdate attribute
+to the mix with:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro');</pre>
+<p>As we don't want to be able to change the birthdate, we'll make it
+read-only.  By default, this attribute accepts any scalar, so these
+are all equally valid:</p>
+<pre>
+  my $horse = Horse-&gt;new(born =&gt; 'yesterday', name =&gt; 'Newbie');
+  my $cow = Cow-&gt;new(born =&gt; 'spring of 82', name =&gt; 'Bessie');
+  my $mouse = Mouse-&gt;new(name =&gt; 'Minnie', born =&gt; '3/14/1929');
+  my $racehorse = RaceHorse-&gt;new(name =&gt; 'Slew', born =&gt; [3, 5, 59]);</pre>
+<p>We can get a bit of help from Moose to narrow down the permissible
+type of this new birthdate attribute using Moose's typing system:</p>
+<pre>
+  require DateTime;
+  has 'born' =&gt; (is =&gt; 'ro', isa =&gt; 'DateTime');</pre>
+<p>The <code>isa</code> parameter here declares that the <code>born</code> parameter must be
+a DateTime object, or at least something that responds true to
+<code>UNIVERSAL::isa($thing, &quot;DateTime&quot;)</code>.</p>
+<p>Now, if we try to put anything in this <code>born</code> attribute other than
+a <code>DateTime</code>, we get a run-time error.  So, this fails:</p>
+<pre>
+  my $horse = Horse-&gt;new(born =&gt; 'yesterday', name =&gt; 'Newbie');</pre>
+<p>But this succeeds:</p>
+<pre>
+  my $horse = Horse-&gt;new(born =&gt; DateTime-&gt;now, name =&gt; 'Newbie');</pre>
+<p>The <code>DateTime</code> string for <code>isa</code> refers here to the Perl class.
+However, we can also define this as an artificial Moose type:</p>
+<pre>
+  use Moose::Util::TypeConstraints;
+  require DateTime;
+  subtype 'DateTime'
+    =&gt; as 'Object'
+    =&gt; where { $_-&gt;isa('DateTime') };</pre>
+<p>This works like before, but now identifies <code>DateTime</code> as a
+Moose-type.  The type is created by starting with any <code>Object</code>, and
+then requiring that this object pass the additional qualification of
+being a subclass of Perl's <code>DateTime</code>.</p>
+<p>At this point, we could continue to use this Moose-style DateTime type
+as we had before.  But once we've done this, we can further subtype
+the type.  For example, we can require that the date be a historical
+date (before now):</p>
+<pre>
+  subtype 'HistoricalDateTime'
+    =&gt; as 'DateTime'
+    =&gt; where { $_ &lt;= DateTime-&gt;now };
+  has 'born' =&gt; (is =&gt; 'ro', isa =&gt; 'HistoricalDateTime');</pre>
+<p>Now, not just any DateTime will do.  It has to be something that isn't
+in the future.  The expression in <code>where</code> can be any expression
+returning a true/false value, using <code>$_</code> as a proxy for the object in
+question.</p>
+<p>It'd be easier if we could still use casual forms like <code>yesterday</code>
+and <code>3/14/1929</code>.  These are both understood by <code>Date::Manip</code>.  We
+could parse the strings with <code>Date::Manip</code>, then pull out the component
+values and hand them to <code>DateTime</code>, but luckily, there's already
+a module to do that: <code>DateTime::Format::DateManip</code>.</p>
+<pre>
+  use DateTime::Format::DateManip;
+  my $yesterday = DateTime::Format::DateManip-&gt;parse_datetime('yesterday');
+  my $newbie = Horse-&gt;new(born =&gt; $yesterday, name =&gt; 'Newbie');</pre>
+<p>Not bad.  Our newbie horse is born yesterday, as we expect.  But
+it'd be nice to just drop <code>yesterday</code> into the slot and have it do
+all of that for us. And with <em>coercions</em>, we can.</p>
+<p>Since passing a simple string as the birthtime is illegal, we can
+inform Moose that it should take that string and run it through
+<code>DateTime::Format::DateManip</code> automatically:</p>
+<pre>
+  coerce 'HistoricalDateTime'
+    =&gt; from 'Str'
+    =&gt; via {
+      require DateTime::Format::DateManip;
+      DateTime::Format::DateManip-&gt;parse_datetime($_);
+    };</pre>
+<p>The <code>via</code> code block takes <code>$_</code> as the input value, which is
+expected to be a string (<code>Str</code>).  The last expression evaluated in
+the code is the new <code>HistoricalDateTime</code> value.  We then permit this
+coercion to be used by adding <code>coerce</code> into the attribute
+declaration:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro',
+                 isa =&gt; 'HistoricalDateTime',
+                 coerce =&gt; 1,
+                );</pre>
+<p>Now, the <code>born</code> slot accepts either an explicit <code>DateTime</code> as
+before, or a simple string.  The string must be acceptable to
+<code>Date::Manip</code>, which will be used to convert the string into a
+<code>DateTime</code> object as our object is created.</p>
+<pre>
+  my $newbie = Horse-&gt;new(born =&gt; 'yesterday', name =&gt; 'Newbie');
+  my $mouse = Mouse-&gt;new(name =&gt; 'Minnie', born =&gt; '3/14/1929');</pre>
+<p>Also, because the type constraint is still in place, the verification
+to ensure the result is a historical date is still active.</p>
+<p>Besides the named classes and <code>Str</code>, <code>Moose::Util::TypeConstraints</code>
+also establishes types of things like <code>Bool</code> and <code>HashRef</code>.</p>
+<p>We could even have multiple coercions defined, as long as they are
+distinct.  For example, we could use a hashref in the birthtime slot
+to indicate that we are passing key/value pairs to be handed to a
+<code>DateTime</code> constructor directly:</p>
+<pre>
+  coerce 'DateTime'
+    =&gt; from 'HashRef'
+    =&gt; via { DateTime-&gt;new(%$_) };</pre>
+<p>And now we can use a hashref to define the birthdate:</p>
+<pre>
+  my $mouse = Mouse-&gt;new(
+    name =&gt; 'Minnie',
+    born =&gt; { month =&gt; 3, day =&gt; 14, year =&gt; 1929 },
+  );</pre>
+<p>If the value for <code>born</code> is a <code>DateTime</code>, it's used directly.  If
+it's a string, it's passed to <code>DateTime::Format::DateManip</code>.  And if
+it's a hashref, it's passed directly as a flattened list to the
+<code>DateTime</code> constructor.  Very cool.</p>
+<p>The value we specify for a <code>default</code> is subject to the same coercions
+and type checking.  We can update <code>born</code> as:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro',
+                 isa =&gt; 'HistoricalDateTime',
+                 coerce =&gt; 1,
+                 default =&gt; 'yesterday',
+                );</pre>
+<p>And now our animals default to being ``born yesterday''.  Note that the
+default value is still subject to the type constraints, so if we
+replace <code>yesterday</code> with <code>tomorrow</code>, the default value will be
+rejected properly.  Note that the coercion happens as each object is
+created, so a default value of <code>one minute ago</code> will give us a new
+time each time it is called.</p>
+<p>While we're on things we can do to attributes, another interesting
+item is <code>lazy</code>.  If the default value is expensive to compute, we can
+say ``don't really do this until you need to do it''.  For example,
+turning <code>yesterday</code> into a DateTime is slightly expensive, so we
+can flag that as lazy:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro',
+                 isa =&gt; 'HistoricalDateTime',
+                 coerce =&gt; 1,
+                 default =&gt; 'yesterday',
+                 lazy =&gt; 1,
+                );</pre>
+<p>Speaking of great support, as I was writing that last paragraph, I
+noticed a bug in the result, and chatting with Stevan on IRC got it
+fixed before I could turn this article in.  Yeay.</p>
+<p>Anything built with <code>Moose</code> has a very high degree of introspection
+available.  For example, we can ask one of our animal friends to give us
+the <code>meta</code> object, with which we can make further requests:</p>
+<pre>
+  my $horse = Horse-&gt;new;
+  my $meta = $horse-&gt;meta; # or equivalently, Horse-&gt;meta</pre>
+<p><code>$meta</code> is a <code>Moose::Meta::Class</code>.  We can ask the horse for the
+<em>roles</em>:</p>
+<pre>
+  my @roles = @{$meta-&gt;roles};</pre>
+<p>In this case, we see that we've mixed in one role (of type <code>Moose::Meta::Role</code>,
+and get the name with:</p>
+<pre>
+  map { $_-&gt;name } @roles; # qw(Animal)</pre>
+<p>which gives us <code>Animal</code> as we might expect.  We can also ask
+the meta object for all applicable methods:</p>
+<pre>
+  my @methods = $meta-&gt;get_method_list;</pre>
+<p>which returns</p>
+<pre>
+  BEGIN
+  born
+  color
+  default_color
+  eat
+  meta
+  name
+  private_set_color
+  sound
+  speak</pre>
+<p>Nice.  Not sure what BEGIN is doing in there, but the rest are things
+that we've defined.  Many of these methods relate to the attributes,
+but we'd can query those definitively using
+<code>compute_all_applicable_attributes</code> instead:</p>
+<pre>
+  my @attrs = $meta-&gt;compute_all_applicable_attributes;</pre>
+<p>The result is a set of <code>Moose::Meta::Attribute</code> objects.  We can
+map them through <code>name</code> as before to get the names:</p>
+<pre>
+  map { $_-&gt;name } @attrs; # qw(born color name)</pre>
+<p>We can also see if they have setters:</p>
+<pre>
+  grep { $_-&gt;has_writer } @attrs; # qw(color)</pre>
+<p>Note that only <code>color</code> has a setter: the other two are read-only,
+so this makes sense.</p>
+<p>As noted above, Moose is still being actively developed, but is
+<em>production ready</em> as long as you stick with things that work.
+You'll find the latest Moose in the CPAN, along with some other
+core plugins, typically in the <code>MooseX</code> namespace.</p>
+<p>For example, <code>MooseX::Getopt</code> allows you to define your <code>@ARGV</code> processing
+using type coercion, type constraints, and all that jazz.  I haven't had time
+to play with that yet, but it's on my to-do list, so perhaps I'll cover that
+in a future column.</p>
+<p>Similarly, <code>MooseX::Object::Pluggable</code> makes it easy to write classes
+that are <em>pluggable</em>, meaning that they can work well with plugins
+that define additional methods and attributes.  (Think of a generic
+web server or IRC bot object that has individually selectable
+additional behaviors.)  Again, I'm just noticing these, and they look
+like they are worthy of their own descriptions later.</p>
+<p>Also note that <code>Moose</code> is itself built on <code>Class::MOP</code>, which is a
+framework for making class frameworks.  Perhaps other projects besides
+Moose will be using Class::MOP as a starting point as well.  For
+example, the infrastructure of <code>Class::Prototyped</code> (which I use in my
+own <code>CGI::Prototype</code>) might be built on <code>Class::MOP</code>, giving it more
+flexibility and robustness.</p>
+<p>I hope you've enjoyed this two-part introduction to <code>Moose</code>.  Have
+fun playing with a production-ready flexible object-building system.  Until next time, enjoy!</p>
+
+</body>
+
+</html>
+</td>
+</tr>
+<hr>
+Randal L. Schwartz is a renowned expert on the Perl programming
+language (the lifeblood of the Internet), having contributed to a
+dozen top-selling books on the subject, and over 200 magazine
+articles.  Schwartz runs a Perl training and consulting company
+(Stonehenge Consulting Services, Inc of Portland, Oregon), and is a
+highly sought-after speaker for his masterful stage combination of
+technical skill, comedic timing, and crowd rapport. And he's a
+pretty good Karaoke singer, winning contests regularly.
+<p>
+Schwartz can be reached for comment at
+<a href="mailto:merlyn@stonehenge.com">merlyn@stonehenge.com</a>
+or +1 503 777-0095, and welcomes questions on Perl and other
+related topics.
+</div>
+</body>
+</html>
+
+  

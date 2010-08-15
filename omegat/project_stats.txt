@@ -1,25 +1,25 @@
 Estadístiques del projecte
 
 Total:
-	Segments	984
-	Paraules	5146
-	Caràcters (sense espais)	28630
-	Caràcters (amb espais)	32338
+	Segments	1772
+	Paraules	9602
+	Caràcters (sense espais)	54032
+	Caràcters (amb espais)	60802
 Restants:
-	Segments	796
-	Paraules	2480
-	Caràcters (sense espais)	14522
-	Caràcters (amb espais)	15760
+	Segments	1424
+	Paraules	4510
+	Caràcters (sense espais)	27130
+	Caràcters (amb espais)	29218
 Únics:
-	Segments	423
-	Paraules	2439
-	Caràcters (sense espais)	13595
-	Caràcters (amb espais)	15353
+	Segments	560
+	Paraules	3878
+	Caràcters (sense espais)	21549
+	Caràcters (amb espais)	24613
 Únics restants:
-	Segments	329
-	Paraules	1106
-	Caràcters (sense espais)	6541
-	Caràcters (amb espais)	7064
+	Segments	386
+	Paraules	1332
+	Caràcters (sense espais)	8098
+	Caràcters (amb espais)	8821
 
 Estadístiques per fitxer:
 
@@ -28,3 +28,7 @@ col94.html	2573	1240	14315	7261	16169	7880
 col94_body.html	1814	481	9807	2753	11466	3177
 col94_footer.html	102	102	587	587	680	680
 col94_header.html	657	657	3921	3921	4023	4023
+col95.html	2228	1015	12701	6304	14232	6729
+col95_body.html	1469	256	8193	1796	9529	2026
+col95_footer.html	102	102	587	587	680	680
+col95_header.html	657	657	3921	3921	4023	4023

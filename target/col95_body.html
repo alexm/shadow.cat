@@ -1,0 +1,134 @@
+<h1><a name="linux_magazine_column_95__jul_2007_">Linux Magazine Column 95 (Jul 2007)</a></h1>
+<p>[títol suggerit: «El Moose està volant (2a part)»]</p>
+<p>El mes passat, vaig introduir el sistema d'objectes <code>Moose</code> recorrent el codi desenvolupat a la pàgina de manual de <em>perlboot</em> , reescrivint-ho per utilitzar Moose. Continuant a partir d'aquella discussió, fem un cop d'ull a algunes de les característiques que no vaig cobrir el mes passat.</p>
+<p>El nostre rol <code>Animal</code> incloïa atributs de <code>name</code> i <code>color</code>, i mètodes de <code>speak</code> i <code>eat</code>. Podem afegir un atribut d'aniversari a la barreja amb:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro');</pre>
+<p>Com que no volem que es pugui canviar la data d'aniversari, farem que sigui no modificable. Per defecte, aquest atribut accepta qualsevol escalar, així que aquests són tots equivalentment vàlids:</p>
+<pre>
+  my $horse = Horse-&gt;new(born =&gt; 'yesterday', name =&gt; 'Newbie');
+  my $cow = Cow-&gt;new(born =&gt; 'spring of 82', name =&gt; 'Bessie');
+  my $mouse = Mouse-&gt;new(name =&gt; 'Minnie', born =&gt; '3/14/1929');
+  my $racehorse = RaceHorse-&gt;new(name =&gt; 'Slew', born =&gt; [3, 5, 59]);</pre>
+<p>Podem aconseguir una mica d'ajuda de Moose per reduir el tipus permès d'aquest nou atribut aniversari utilitzant el sistema de tipus de Moose:</p>
+<pre>
+  require DateTime;
+  has 'born' =&gt; (is =&gt; 'ro', isa =&gt; 'DateTime');</pre>
+<p>El paràmetre <code>isa</code> declara aquí que el paràmetre  <code>born</code>  ha de ser un objecte DateTime, o com a mínim algun tipus que respongui cert a <code>UNIVERSAL::isa($thing, "DateTime")</code>.</p>
+<p>Ara, si intentem assignar qualsevol cosa a l'atribut <code>born</code> que no sigui un <code>DateTime</code>, obtenim un error en temps d'execució. Així doncs, això falla:</p>
+<pre>
+  my $horse = Horse-&gt;new(born =&gt; 'yesterday', name =&gt; 'Newbie');</pre>
+<p>Però això funciona:</p>
+<pre>
+  my $horse = Horse-&gt;new(born =&gt; DateTime-&gt;now, name =&gt; 'Newbie');</pre>
+<p>La cadena <code>DateTime</code> per <code>isa</code> es refereix aquí a la classe de Perl. Tanmateix, també podem definir això com un tipus de Moose artificial:</p>
+<pre>
+  use Moose::Util::TypeConstraints;
+  require DateTime;
+  subtype 'DateTime'
+    =&gt; as 'Object'
+    =&gt; where { $_-&gt;isa('DateTime') };</pre>
+<p>Això funciona com abans, però ara identifica <code>DateTime</code> com un tipus de Moose. El tipus es crea començant amb qualsevol <code>Object</code> i després requering que aquest objecte passi la qualificació adicional de ser una subclasse de <code>DateTime</code> de Perl.</p>
+<p>En aquest punt, podem continuar utilitzant aquest DateTime de Moose com ho fèiem abans. Una vegada hem fet això, podem derivar un subtipus del tipus. Per exemple, podem requerir que la data sigui històrica (prèvia al present):</p>
+<pre>
+  subtype 'HistoricalDateTime'
+    =&gt; as 'DateTime'
+    =&gt; where { $_ &lt;= DateTime-&gt;now };
+  has 'born' =&gt; (is =&gt; 'ro', isa =&gt; 'HistoricalDateTime');</pre>
+<p>Ara no funcionarà qualsevol DateTime. Ha de ser algun moment que no sigui al futur. L'expressió al <code>where</code> pot ser qualsevol expressió que retorni un valor cert/fals, utilitzant <code>$_</code> com a proxy per a l'objecte en qüestió.</p>
+<p>Seria més senzill encara si poguèssim utilitzar expressions informals com <code>yesterday</code> i <code>3/14/1929</code>. <code>Date::Manip</code> enten aquestes dues. Podem analitzar les cadenes amb <code>Date::Manip</code>, extreure els valors dels components i després entregar-los a <code>DateTime</code>, però afortunadament, ja hi ha un mòdul que fa això: <code>DateTime::Format::DateManip</code>.</p>
+<pre>
+  use DateTime::Format::DateManip;
+  my $yesterday = DateTime::Format::DateManip-&gt;parse_datetime('yesterday');
+  my $newbie = Horse-&gt;new(born =&gt; $yesterday, name =&gt; 'Newbie');</pre>
+<p>No està malament. El nostre aprenent cavall va nèixer ahir, tal com esperàvem. Però estaria bé simplement posar <code>yesterday</code> al paràmetre i deixar que ho faci tot per nosaltres. I amb <em>coercions</em>, podem fer-ho.</p>
+<p>Com que passar una cadena com a aniversari no està permés, podem indicar a Moose que agafi la cadena i la passi per  <code>DateTime::Format::DateManip</code> automàticament:</p>
+<pre>
+  coerce 'HistoricalDateTime'
+    =&gt; from 'Str'
+    =&gt; via {
+      require DateTime::Format::DateManip;
+      DateTime::Format::DateManip-&gt;parse_datetime($_);
+    };</pre>
+<p>El bloc <code>via</code> agafa <code>$_</code> com un valor d'entrada, que s'espera que sigui una cadena (<code>Str</code>). L'última expressió avaluada al codi és el nou valor <code>HistoricalDateTime</code>. Després permetem l'ús d'aquesta coacció afegint <code>coerce</code>  a la declaració de l'atribut:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro',
+                 isa =&gt; 'HistoricalDateTime',
+                 coerce =&gt; 1,
+                );</pre>
+<p>Ara el paràmetre <code>born</code> accepta o bé un <code>DateTime</code> explícit com abans, o bé una cadena simple. La cadena ha de ser acceptable per <code>Date::Manip</code>, que serà utilitzat per convertir la cadena a un objecte <code>DateTime</code> quan el nostre objecte sigui creat.</p>
+<pre>
+  my $newbie = Horse-&gt;new(born =&gt; 'yesterday', name =&gt; 'Newbie');
+  my $mouse = Mouse-&gt;new(name =&gt; 'Minnie', born =&gt; '3/14/1929');</pre>
+<p>A més, com que la coacció de tipus està a lloc, la verificació per assegurar que el resultat és una data històrica encara està activa.</p>
+<p>A més dels noms de les classes i <code>Str</code>, <code>Moose::Util::TypeConstraints</code> també estableix els tipus de coses com <code>Bool</code> i <code>HashRef</code>.</p>
+<p>Fins i tot podríem tenir múltiples coaccions definides, sempre i quan siguin diferents. Per exemple, podem utilitzar una referència a una taula de dispersió al paràmetre aniversari per indicar que estem passant parells clau/valor perquè siguin entregats directament a un constructor <code>DateTime</code>:</p>
+<pre>
+  coerce 'DateTime'
+    =&gt; from 'HashRef'
+    =&gt; via { DateTime-&gt;new(%$_) };</pre>
+<p>I ara podem definir una referència a una taula de dispersió per definir l'aniversari:</p>
+<pre>
+  my $mouse = Mouse-&gt;new(
+    name =&gt; 'Minnie',
+    born =&gt; { month =&gt; 3, day =&gt; 14, year =&gt; 1929 },
+  );</pre>
+<p>Si el valor per a <code>born</code> és un <code>DateTime</code>, s'utilitza directament. Si és una cadena, es passa a <code>DateTime::Format::DateManip</code>. I si és una referència a una taula de dispersió, es passa directament com una llista aplanada al constructor <code>DateTime</code>. Genial.</p>
+<p>El valor que especifiquem per a <code>default</code> està subjecte a les mateixes coaccions i comprovacions de tipus. Podem actualitzar <code>born</code> a:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro',
+                 isa =&gt; 'HistoricalDateTime',
+                 coerce =&gt; 1,
+                 default =&gt; 'yesterday',
+                );</pre>
+<p>I ara, el valor per defecte dels animals a ``nascut ahir''. Observeu que el valor per defecte encara està subjecte a les restriccions de tipus, per tant si substituïm <code>yesterday</code> per <code>tomorrow</code>, el valor per defecte serà rebutjat. Observeu que la coacció passa a mesura que cada objecte es crea, per tant el valor per defecte <code>one minute ago</code> ens donarà una data diferent cada vegada que sigui cridat.</p>
+<p>Mentre estudiem què podem fer als atributs, un altre element interessant és <code>lazy</code>. Si el valor per defecte és car de calcular, podem dir ``no facis això fins que ho necessitis''. Per exemple, convertir <code>yesterday</code> a un objecte DateTime és una mica car, així que ho podem marcar com lazy:</p>
+<pre>
+  has 'born' =&gt; (is =&gt; 'ro',
+                 isa =&gt; 'HistoricalDateTime',
+                 coerce =&gt; 1,
+                 default =&gt; 'yesterday',
+                 lazy =&gt; 1,
+                );</pre>
+<p>I parlant de suport fantàstic, mentre escrivia aquest últim pàrraf vaig descobrir un error de programació, i commentar-ho amb Stevan a l'IRC ho va solucionar abans que jo entregués l'article. Visca.</p>
+<p>Qualsevol cosa construïda amb <code>Moose</code> té disponible un grau molt alt d'introspecció. Per exemple, podem demanar a un dels nostres amics animals que ens doni l'objecte <code>meta</code>, amb el què podrem fer més peticions:</p>
+<pre>
+  my $horse = Horse-&gt;new;
+  my $meta = $horse-&gt;meta; # or equivalently, Horse-&gt;meta</pre>
+<p><code>$meta</code> is a <code>Moose::Meta::Class</code>. Podem demanar al cavall per els <em>roles</em>:</p>
+<pre>
+  my @roles = @{$meta-&gt;roles};</pre>
+<p>En aquest cas, veiem que hem obtingut un rol (de tipus <code>Moose::Meta::Role</code>), i aconseguit el nom amb:</p>
+<pre>
+  map { $_-&gt;name } @roles; # qw(Animal)</pre>
+<p>cosa que ens dona un <code>Animal</code> tal com esperàvem. Podem demanar a l'objecte meta tots els mètodes aplicables:</p>
+<pre>
+  my @methods = $meta-&gt;get_method_list;</pre>
+<p>cosa que retorna</p>
+<pre>
+  BEGIN
+  born
+  color
+  default_color
+  eat
+  meta
+  name
+  private_set_color
+  sound
+  speak</pre>
+<p>Genial. No estic segur de què fa BEGIN aquí, però la resta són elements que hem definit. Molts d'aquests mètodes es relacionen amb atributs, però podem demanar aquests definitivament utilitzant <code>compute_all_applicable_attributes</code>:</p>
+<pre>
+  my @attrs = $meta-&gt;compute_all_applicable_attributes;</pre>
+<p>El resultat és un conjunt d'objectes <code>Moose::Meta::Attribute</code>. Podem utilitzar el «map« sobre <code>name</code> com abans per aconseguir els noms:</p>
+<pre>
+  map { $_-&gt;name } @attrs; # qw(born color name)</pre>
+<p>També podem veure si tenen «setters»:</p>
+<pre>
+  grep { $_-&gt;has_writer } @attrs; # qw(color)</pre>
+<p>Observeu que només <code>color</code> té un «setter»: els altres dos no són modificables, així que això té sentit.</p>
+<p>Tal com s'ha comentat abans, Moose encara està sent desenvolupat de forma activa, però és <em>production ready</em> mentre us mantingueu en les coses que funcionen. Trobareu l'últim Moose al CPAN, juntament amb algun altre complement base, normalment a l'espai de noms <code>MooseX</code>.</p>
+<p>Per exemple, <code>MooseX::Getopt</code> us permet definir el vostre procés de <code>@ARGV</code> utilitzant coacció de tipus, restriccions de tipus, i totes aquestes coses. No he tingut temps per jugar-hi encara, però està a la meva llista de coses pendents, així que potser en parlaré a una columna futura.</p>
+<p>De forma similar, <code>MooseX::Object::Pluggable</code> simplifica l'escriptura de classes que són <em>pluggable</em>, que significa que poden treballar bé amb complements que defineixen mètodes i atributs adicionals. (Penseu en un servidor web genèric o un «bot« IRC que té comportaments adicionals seleccionables individualment.) De nou, m'estic adonant ara d'aquests, i sembla que valgui la pena fer-ne una descripció especial més tard.</p>
+<p>Observeu a més que el mateix <code>Moose</code> està construit sobre <code>Class::MOP</code>, que és un entorn de treball per crear entorns de treball de classes. Potser altres projectes a més de Moose també utilitzaran Class::MOP com a punt de partida. Per exemple, l'infraestructura de <code>Class::Prototyped</code> (que utilitzo al meu <code>CGI::Prototype</code>) podria construir-se sobre <code>Class::MOP</code>, proporcionant més flexibilitat i robustesa.</p>
+<p>Espero que hagueu gaudit d'aquesta introducció en dues parts a <code>Moose</code>. Divertiu-vos jugant amb un sistema de construcció d'objectes flexible preparat per a producció. Fins aleshores, gaudiu!</p>
+
