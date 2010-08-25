@@ -1,0 +1,320 @@
+=pod
+
+=encoding utf-8
+
+=head1 NAME/NOM
+
+Moose::Manual::Concepts - Conceptes d'OO a Moose
+
+=head1 CONCEPTES DE MOOSE (contra Perl "de la vella escola")
+
+En el passat potser no heu pensat massa en la diferència entre paquets i classes, atributs i mètodes, constructors i mètodes, etc. Amb Moose totes aquestes són coses conceptualment separades, tot i que internament s'implementa amb Perl tradicional.
+
+El nostre protocol de meta-objectes (també conegut com MOP) ofereix característiques d'introspecció ben definides per a cadascun d'aquests conceptes, i al seu torn Moose ofereix una diferent sintaxi ensucrada per a cadascun d'ells. Moose també introdueix conceptes addicionals com ara els rols, els modificadors de mètodes i la delegació declarativa.
+
+Conèixer el que volen dir aquests conceptes en l'argot de Moose i com s'acostumaven a utilitzar en l'OO de Perl 5 de la vella escola és una bona manera de començar a aprendre a utilitzar Moose.
+
+=head2 Classe
+
+Quan dieu "use Moose" en un paquet, esteu convertint en vostre paquet en una classe. La manera més simple de definir una classe consistirà únicament d'atributs i/o mètodes. També pot incloure rols, modificadors de mètodes i més.
+
+Una classe I<té> zero o més B<atributs>.
+
+Una classe I<té> zero o més B<mètodes>.
+
+Una classe I<té> zero o més superclasses (o classes pare). Una classe hereta de les seves superclasses.
+
+Una classe I<té> zero o més B<modificadors de mètodes>. Aquests modificadors es poden aplicar als seus propis mètodes o als mètodes heretats dels seus ancestres.
+
+Una classe I<fa> (i I<consumeix>) zero o més B<rols>.
+
+Una classe I<té> un B<constructor> i un B<destructor>. Aquests us els ofereix Moose de franc.
+
+El B<constructor> accepta paràmetres amb nom que corresponguin als atributs de la classe i els utilitza per inicialitzar una B<instància de l'objecte>.
+
+Una classe I<té> una B<meta-classe>, que al seu torn té B<meta-atributs>, B<meta-mètodes>, i B<meta-rols>. Aquesta meta-classe I<descriu> la classe.
+
+Una classe normalment és anàloga a una categoria de noms, com ara "Persones" o "Usuaris".
+
+  package Person;
+
+  use Moose;
+  # ara és una classe de Moose!
+
+=head2 Atribut
+
+Un atribut és una propietat que defineix una classe. I<Sempre> té un nom i I<pot tenir> d'altres propietats.
+
+Aquestes propietats inclouen un indicador de lectura/escriptura, un B<tipus>, noms dels mètodes accessors, B<delegacions>, un valor predeterminat, i més.
+
+Els atributs I<no són> mètodes, però en definir-los es creen diversos mètodes accessors. Com a mínim, un atribut normal tindrà sempre un mètode accessor de lectura. Molts atributs també tenen altres mètodes, com ara un mètode d'escriptura, un mètode de neteja, i un mètode de predicat ("s'ha establert?").
+
+Un atribut també pot definir B<delegacions>, que crearan mètodes addicionals basats en el mapatge de delegacions.
+
+Per defecte, Moose emmagatzema els atributs a la instància de l'objecte, què és una referència a una taula de dispersió, I<però això és invisible a l'autor d'una classe basada en Moose>!  És millor pensar en els atributs de Moose com a "propietats" de la B<instància I<opaca> de l'objecte>. Aquestes propietats s'accedeixen mitjançant mètodes accessors ben definits.
+
+Un atribut és quelcom que tenen els membres de la classe. Per exemple, les persones tenen nom i cognom. Els usuaris tenen contrasenyes i la data i hora de darrera connexió.
+
+  has 'first_name' => (
+      is  => 'rw',
+      isa => 'Str',
+  );
+
+=head2 Mètode
+
+Un B<mètode> és força pim pam. Qualsevol subrutina que definiu a la vostra classe és un mètode.
+
+Els B<mètodes> es corresponen amb verbs i són el que els vostres objectes poden fer. Per exemple, un Usuari pot connectar-se.
+
+  sub login { ... }
+
+=head2 Rols
+
+Un rol és quelcom que una classe I<fa>. Diem que les classes I<consumeixen> rols. Per exemple, una classe Màquina podria fer el rol Trencable, tal com podria fer-ho una classe Os. Un rol s'utilitza per definit algun concepte que s'aplica a múltiples classes que no estan relacionades, com ara la "trencabilitat", o
+"té un color".
+
+Un rol I<té> zero o més B<atributs>.
+
+Un rol I<té> zero o més B<mètodes>.
+
+Un rol I<té> zero o més B<modificadors de mètode>.
+
+Un rol I<té> zero o més B<mètodes necessaris>.
+
+Un mètode necessari no s'implementa dins el rol. Els mètodes necessaris diuen "per utilitzar aquest Rol heu d'implementar aquest mètode".
+
+Un rol I<té> zero o més B<rols exclosos>.
+
+Un rol exclós és un rol que no es pot combinar amb el rol que indica l'exclusió.
+
+Els rols es I<composen> dins de les classes (o d'altres rols). Quan un rol es composa dins d'una classe els seus atributs i els seus mètodes se "simplifiquen" dins de la classe. Els rols I<no> apareixen a la jerarquia de l'herència. Quan es composa un rol els seus atributs i mètodes apareixen com si s'haguessin definit I<a la classe que el consumeix>.
+
+Els rols són quelcom semblant als I<mixins> o les interfícies en altres llenguatges amb OO.
+
+  package Breakable;
+
+  use Moose::Role;
+
+  requires 'break';
+
+  has 'is_broken' => (
+      is  => 'rw',
+      isa => 'Bool',
+  );
+
+  after 'break' => sub {
+      my $self = shift;
+
+      $self->is_broken(1);
+  };
+
+=head2 Modificadors de mètode
+
+Un B<modificador de mètode> és un ganxo que es crida quan es crida un mètode amb nom. Per exemple, podeu dir "abans de cridar C<login()>, primer crideu aquest modificador". Els modificadors tenen diferents aspectes com ara "before", "after", "around", i "augment", i podeu aplicar més d'un modificador a un sol mètode.
+
+Els modificadors de mètode s'utilitzen sovint com a alternativa a sobreescriure un mètode d'una classe pare. També s'utilitzen als rols com una manera de modificar els mètodes a la classe que els consumeix.
+
+Internament, un modificador de mètode és una subrutina tradicional de Perl que s'executa abans o després (o enmig, etc.) d'algun mètode amb nom.
+
+  before 'login' => sub {
+      my $self = shift;
+      my $pw   = shift;
+
+      warn "Called login() with $pw\n";
+  };
+
+=head2 Tipus
+
+Moose també duu un sistema de tipus (en miniatura). Això us permet definir tipus per als atributs. Moose té un conjunt de tipus integrats que es basen en el que ofereix Perl, com ara C<Str>, C<Num>, C<Bool>, C<HashRef>, etc.
+
+Addicionalment, cada nom de classe de la vostra aplicació també es pot utilitzar com un nom de tipus.
+
+Finalment, podeu definir els vostres propis tipus, ja siguin subtipus o tipus totalment nous, amb les seves pròpies restriccions. Per exemple, podeu definir un tipus C<PosInt>, un subtipus d'C<Int> que només permet números positius.
+
+=head2 Delegació
+
+Els atributs de Moose ofereixen una sintaxi declarativa per a definir les delegacions. Una delegació és un mètode que crida algun altre mètode d'un atribut per a fer la feina de veritat.
+
+=head2 Constructor
+
+Un constructor crea una B<instància de l'objecte> per a una classe. En Perl de la vella escola això es feia normalment definint un mètode anomenat C<new()>, que al seu torn cridava C<bless> sobre una referència.
+
+Amb Moose, aquest mètode C<new()> es crea per a vosaltres i simplement fa el que ha de fer. No us hauria de caldre mai definir el vostre propi constructor!
+
+De vegades voleu fer alguna cosa quan es crea un objecte. En aquests casos podeu definir el mètode C<BUILD()> a la vostra classe. Moose el cridarà just després de crear un nou objecte.
+
+=head2 Destructor
+
+Aquest és un mètode especial que es crida quan una instància de l'objecte surt fora de context. Podeu refinar el que fa la vostra classe en aquest mètode si us cal, però normalment no us caldrà.
+
+Amb el Perl de la vella escola s'utilitzava el mètode C<DESTROY()>, però amb Moose és el mètode C<DEMOLISH()>.
+
+=head2 Herència d'objectes
+
+Una instància de l'objecte és un nom específic a la "categoria" de la classe. Per exemple, una Persona o un Usuari específics. Una instància es crea amb el B<constructor> de la classe.
+
+Una instància té valors per als seus atributs. Per exemple, una persona específica té un nom i un cognom.
+
+Amb Perl de la vella escola això normalment seria una referència beneïda a una taula de dispersió. Amb Moose no us hauria de caldre mai saber quina és la vostra instància de l'objecte. (D'acord, normalment també és una referència beneïda a una taula de dipsersió a Moose).
+
+=head2 Moose vs old school summary
+
+=over 4
+
+=item * Class
+
+A package with no introspection other than mucking about in the symbol
+table.
+
+With Moose, you get well-defined declaration and introspection.
+
+=item * Attributes
+
+Hand-written accessor methods, symbol table hackery, or a helper
+module like C<Class::Accessor>.
+
+With Moose, these are declaratively defined, and distinct from
+methods.
+
+=item * Method
+
+These are pretty much the same in Moose as in old school Perl.
+
+=item * Roles
+
+C<Class::Trait> or C<Class::Role>, or maybe C<mixin.pm>.
+
+With Moose, they're part of the core feature set, and are
+introspectable like everything else.
+
+=item * Method Modifiers
+
+Could only be done through serious symbol table wizardry, and you
+probably never saw this before (at least in Perl 5).
+
+=item * Type
+
+Hand-written parameter checking in your C<new()> method and accessors.
+
+With Moose, you define types declaratively, and then use them by name
+in your attributes.
+
+=item * Delegation
+
+C<Class::Delegation> or C<Class::Delegator>, but probably even more
+hand-written code.
+
+With Moose, this is also declarative.
+
+=item * Constructor
+
+A C<new()> method which calls C<bless> on a reference.
+
+Comes for free when you define a class with Moose.
+
+=item * Destructor
+
+A C<DESTROY()> method.
+
+With Moose, this is called C<DEMOLISH()>.
+
+=item * Object Instance
+
+A blessed reference, usually a hash reference.
+
+With Moose, this is an opaque thing which has a bunch of attributes
+and methods, as defined by its class.
+
+=item * Immutabilization
+
+Moose comes with a feature called "immutabilization". When you make
+your class immutable, it means you're done adding methods, attributes,
+roles, etc. This lets Moose optimize your class with a bunch of
+extremely dirty in-place code generation tricks that speed up things
+like object construction and so on.
+
+=back
+
+=head1 META WHAT?
+
+A metaclass is a class that describes classes. With Moose, every class
+you define gets a C<meta()> method. It returns a L<Moose::Meta::Class>
+object, which has an introspection API that can tell you about the
+class it represents.
+
+  my $meta = User->meta();
+
+  for my $attribute ( $meta->get_all_attributes ) {
+      print $attribute->name(), "\n";
+
+      if ( $attribute->has_type_constraint ) {
+          print "  type: ", $attribute->type_constraint->name, "\n";
+      }
+  }
+
+  for my $method ( $meta->get_all_methods ) {
+      print $method->name, "\n";
+  }
+
+Almost every concept we defined earlier has a meta class, so we have
+L<Moose::Meta::Class>, L<Moose::Meta::Attribute>,
+L<Moose::Meta::Method>, L<Moose::Meta::Role>,
+L<Moose::Meta::TypeConstraint>, L<Moose::Meta::Instance>, and so on.
+
+=head1 BUT I NEED TO DO IT MY WAY!
+
+One of the great things about Moose is that if you dig down and find
+that it does something the "wrong way", you can change it by extending
+a metaclass. For example, you can have arrayref based objects, you can
+make your constructors strict (no unknown parameters allowed!), you can
+define a naming scheme for attribute accessors, you can make a class a
+Singleton, and much, much more.
+
+Many of these extensions require surprisingly small amounts of code,
+and once you've done it once, you'll never have to hand-code "your way
+of doing things" again. Instead you'll just load your favorite
+extensions.
+
+  package MyWay::User;
+
+  use Moose;
+  use MooseX::StrictConstructor
+  use MooseX::MyWay;
+
+  has ...;
+
+=head1 WHAT NEXT?
+
+So you're sold on Moose. Time to learn how to really use it.
+
+If you want to see how Moose would translate directly into old school
+Perl 5 OO code, check out L<Moose::Manual::Unsweetened>. This might be
+helpful for quickly wrapping your brain around some aspects of "the
+Moose way".
+
+Or you can skip that and jump straight to L<Moose::Manual::Classes>
+and the rest of the L<Moose::Manual>.
+
+After that we recommend that you start with the L<Moose::Cookbook>. If
+you work your way through all the recipes under the basics section,
+you should have a pretty good sense of how Moose works, and all of its
+basic OO features.
+
+After that, check out the Role recipes. If you're really curious, go
+on and read the Meta and Extending recipes, but those are mostly there
+for people who want to be Moose wizards and change how Moose works.
+
+=head1 AUTHOR
+
+Dave Rolsky E<lt>autarch@urth.orgE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2008-2009 by Infinity Interactive, Inc.
+
+L<http://www.iinteractive.com>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

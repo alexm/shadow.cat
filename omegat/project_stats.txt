@@ -1,25 +1,25 @@
 Estadístiques del projecte
 
 Total:
-	Segments	1772
-	Paraules	9602
-	Caràcters (sense espais)	54032
-	Caràcters (amb espais)	60802
+	Segments	2206
+	Paraules	12667
+	Caràcters (sense espais)	70105
+	Caràcters (amb espais)	79418
 Restants:
-	Segments	1424
-	Paraules	4510
-	Caràcters (sense espais)	27130
-	Caràcters (amb espais)	29218
+	Segments	1758
+	Paraules	6354
+	Caràcters (sense espais)	37307
+	Caràcters (amb espais)	40954
 Únics:
-	Segments	560
-	Paraules	3878
-	Caràcters (sense espais)	21549
-	Caràcters (amb espais)	24613
+	Segments	901
+	Paraules	6770
+	Caràcters (sense espais)	36587
+	Caràcters (amb espais)	42050
 Únics restants:
-	Segments	386
-	Paraules	1332
-	Caràcters (sense espais)	8098
-	Caràcters (amb espais)	8821
+	Segments	628
+	Paraules	3005
+	Caràcters (sense espais)	17250
+	Caràcters (amb espais)	19389
 
 Estadístiques per fitxer:
 
@@ -32,3 +32,5 @@ col95.html	2228	1015	12701	6304	14232	6729
 col95_body.html	1469	256	8193	1796	9529	2026
 col95_footer.html	102	102	587	587	680	680
 col95_header.html	657	657	3921	3921	4023	4023
+lib/POD2/CA/Moose/Manual/Concepts.pod.txt	2004	785	10009	4123	11619	4750
+lib/POD2/CA/Moose/Manual/Unsweetened.pod.txt	1061	1059	6064	6054	6997	6986
