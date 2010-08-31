@@ -2268,5 +2268,473 @@ actually is.</seg>
         <seg>(D'acord, normalment també és una referència beneïda a una taula de dipsersió a Moose).</seg>
       </tuv>
     </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=head2 Moose vs old school summary</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=head2 Resum de Moose contra Perl de la vella escola</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Class</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Classe</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A package with no introspection other than mucking about in the symbol
+table.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Un paquet sense cap altra introspecció a banda de potinejar la taula de símbols.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, you get well-defined declaration and introspection.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose obteniu una declaració i una introspecció ben definides.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Attributes</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Atributs</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hand-written accessor methods, symbol table hackery, or a helper
+module like C&lt;Class::Accessor&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Mètodes accessors escrits a mà, manipulació de la taula de símbols, o un mòdul d'ajuda com ara C&lt;Class::Accessor&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, these are declaratively defined, and distinct from
+methods.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose es defineixen d'una forma declarativa i diferent dels mètodes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Method</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Mètode</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>These are pretty much the same in Moose as in old school Perl.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Són pràcticament iguals a Moose que a Perl de la vella escola.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Roles</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Rols</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>C&lt;Class::Trait&gt; or C&lt;Class::Role&gt;, or maybe C&lt;mixin.pm&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>C&lt;Class::Trait&gt; o C&lt;Class::Role&gt;, o potser C&lt;mixin.pm&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, they're part of the core feature set, and are
+introspectable like everything else.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose són part central del conjunt de característiques i se'n pot fer introspecció com en qualsevol altra cosa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Method Modifiers</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Modificadors de mètode</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Could only be done through serious symbol table wizardry, and you
+probably never saw this before (at least in Perl 5).</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Només es podria aconseguir fent màgia amb la taula de símbols, i segurament no ho havíeu vist mai fins ara (si més no a Perl 5).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Type</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Tipus</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hand-written parameter checking in your C&lt;new()&gt; method and accessors.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Comprovació a mà dels paràmetres als vostres mètodes C&lt;new()&gt; i als accessors.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, you define types declaratively, and then use them by name
+in your attributes.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose definiu els tipus de forma declarativa i aleshores els utilitzeu pel nom en els vostres atributs.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Delegation</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Delegació</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>C&lt;Class::Delegation&gt; or C&lt;Class::Delegator&gt;, but probably even more
+hand-written code.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>C&lt;Class::Delegation&gt; o C&lt;Class::Delegator&gt;, però probablement encara més codi escrit a mà.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, this is also declarative.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose això també és declaratiu.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A C&lt;new()&gt; method which calls C&lt;bless&gt; on a reference.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Un mètode C&lt;new()&gt; que crida C&lt;bless&gt; sobre una referència.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Comes for free when you define a class with Moose.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>És gratis quan definiu una classe amb Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A C&lt;DESTROY()&gt; method.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Un mètode C&lt;DESTROY()&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, this is called C&lt;DEMOLISH()&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose s'anomena C&lt;DEMOLISH()&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Object Instance</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Instància de l'objecte</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A blessed reference, usually a hash reference.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Una referència beneïda, normalment una referència a una taula de dispersió.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, this is an opaque thing which has a bunch of attributes
+and methods, as defined by its class.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose es tracta d'una cosa opaca que té un seguit d'atributs i mètodes, segons s'hagi definit la classe.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=item * Immutabilization</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=item * Immutabilitat</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Moose comes with a feature called &quot;immutabilization&quot;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Moose té una característica anomenada &quot;immutabilitat&quot;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When you make
+your class immutable, it means you're done adding methods, attributes,
+roles, etc.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Quan feu la vostra classe immutable, significa que heu acabat d'afegir-hi mètodes, atributs, rols, etc.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This lets Moose optimize your class with a bunch of
+extremely dirty in-place code generation tricks that speed up things
+like object construction and so on.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Això permet que Moose optimitzi la vostra classe amb un seguit de trucs de generació de codi extremadament bruts que acceleren coses com ara la construcció d'objectes i tota la pesca.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=head1 META WHAT?</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=head1 META QUÈ?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A metaclass is a class that describes classes.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Una meta-classe és una classe que descriu d'altres classes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With Moose, every class
+you define gets a C&lt;meta()&gt; method.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Amb Moose cada classe que definiu té un mètode C&lt;meta()&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It returns a L&lt;Moose::Meta::Class&gt;
+object, which has an introspection API that can tell you about the
+class it represents.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Retorna un objecte L&lt;Moose::Meta::Class&gt;, que té una API d'introspecció que us pot parlar sobre la classe que representa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Almost every concept we defined earlier has a meta class, so we have
+L&lt;Moose::Meta::Class&gt;, L&lt;Moose::Meta::Attribute&gt;,
+L&lt;Moose::Meta::Method&gt;, L&lt;Moose::Meta::Role&gt;,
+L&lt;Moose::Meta::TypeConstraint&gt;, L&lt;Moose::Meta::Instance&gt;, and so on.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Gairebé qualsevol concepte que hem definit fins ara té una meta-classe, així tenim L&lt;Moose::Meta::Class&gt;, L&lt;Moose::Meta::Attribute&gt;, L&lt;Moose::Meta::Method&gt;, L&lt;Moose::Meta::Role&gt;, L&lt;Moose::Meta::TypeConstraint&gt;, L&lt;Moose::Meta::Instance&gt;, etc.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=head1 BUT I NEED TO DO IT MY WAY!</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=head1 PERÒ NECESSITO FER-HO A LA MEVA MANERA!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>One of the great things about Moose is that if you dig down and find
+that it does something the &quot;wrong way&quot;, you can change it by extending
+a metaclass.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Una de les coses grans de Moose és que si caveu prou fons i trobeu que fa alguna cosa &quot;malament&quot;, podeu canviar-ho extenent una meta-classe.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, you can have arrayref based objects, you can
+make your constructors strict (no unknown parameters allowed!), you can
+define a naming scheme for attribute accessors, you can make a class a
+Singleton, and much, much more.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Per exemple, podeu tenir objectes basats en referències a una matriu, podeu fer que els vostres constructors siguin estrictes (no acceptaran paràmetres desconeguts!), podeu definir l'esquema per anomenar els accessors dels atributs, podeu fer que una classe tingui el patró Singleton i moltíssimes més coses.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Many of these extensions require surprisingly small amounts of code,
+and once you've done it once, you'll never have to hand-code &quot;your way
+of doing things&quot; again.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Sorprenentment, moltes d'aquestes extensions només necessiten quantitats petites de codi i, un cop ho heu fet una vegada, no us caldrà programar a mà &quot;la vostra manera de fer-ho&quot; mai més.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Instead you'll just load your favorite
+extensions.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Només caldrà que carregueu les vostres extensions preferides.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=head1 WHAT NEXT?</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=head1 I ARA QUÈ?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>So you're sold on Moose.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ja us hem venut Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Time to learn how to really use it.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Ara és hora d'aprendre realment a utilitzar-lo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you want to see how Moose would translate directly into old school
+Perl 5 OO code, check out L&lt;Moose::Manual::Unsweetened&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si voleu veure com faríeu el que feu amb Moose però amb OO de Perl 5 de la vella escola, feu un cop d'ull a L&lt;Moose::Manual::Unsweetened&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This might be
+helpful for quickly wrapping your brain around some aspects of &quot;the
+Moose way&quot;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Això pot ser útil per tal que el vostre cervell s'acostumi a &quot;la manera de Moose&quot; d'enfocar algunes coses.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Or you can skip that and jump straight to L&lt;Moose::Manual::Classes&gt;
+and the rest of the L&lt;Moose::Manual&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>O podeu saltar-vos-ho i saltar directament a L&lt;Moose::Manual::Classes&gt; i la resta del L&lt;Moose::Manual&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>After that we recommend that you start with the L&lt;Moose::Cookbook&gt;.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Després, us recomanem que comenceu amb el L&lt;Moose::Cookbook&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If
+you work your way through all the recipes under the basics section,
+you should have a pretty good sense of how Moose works, and all of its
+basic OO features.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si aconseguiu passar més enllà de les receptes de la secció de conceptes bàsics, hauríeu de tenir una bona idea de com funciona Moose i totes les seves característiques d'OO.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>After that, check out the Role recipes.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Després, feu un cop d'ull a les receptes de rols.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you're really curious, go
+on and read the Meta and Extending recipes, but those are mostly there
+for people who want to be Moose wizards and change how Moose works.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si realment teniu curiositat, seguiu llegint les receptes de Meta i Extending, però aquelles són principalment per volen ser mags de Moose i canviar la manera com funciona Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=head1 AUTHOR</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=head1 AUTOR</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>=head1 COPYRIGHT AND LICENSE</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>=head1 COPYRIGHT I LLICÈNCIA</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Aquesta llibreria és programari lliure; podeu redistribuir-la i/o modificar-la amb les mateixes condicions del propi Perl.</seg>
+      </tuv>
+    </tu>
   </body>
 </tmx>

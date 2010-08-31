@@ -6,20 +6,20 @@ Total:
 	Caràcters (sense espais)	70105
 	Caràcters (amb espais)	79418
 Restants:
-	Segments	1758
-	Paraules	6354
-	Caràcters (sense espais)	37307
-	Caràcters (amb espais)	40954
+	Segments	1701
+	Paraules	5668
+	Caràcters (sense espais)	33884
+	Caràcters (amb espais)	36980
 Únics:
 	Segments	901
 	Paraules	6770
 	Caràcters (sense espais)	36587
 	Caràcters (amb espais)	42050
 Únics restants:
-	Segments	628
-	Paraules	3005
-	Caràcters (sense espais)	17250
-	Caràcters (amb espais)	19389
+	Segments	574
+	Paraules	2345
+	Caràcters (sense espais)	13955
+	Caràcters (amb espais)	15564
 
 Estadístiques per fitxer:
 
@@ -32,5 +32,5 @@ col95.html	2228	1015	12701	6304	14232	6729
 col95_body.html	1469	256	8193	1796	9529	2026
 col95_footer.html	102	102	587	587	680	680
 col95_header.html	657	657	3921	3921	4023	4023
-lib/POD2/CA/Moose/Manual/Concepts.pod.txt	2004	785	10009	4123	11619	4750
-lib/POD2/CA/Moose/Manual/Unsweetened.pod.txt	1061	1059	6064	6054	6997	6986
+lib/POD2/CA/Moose/Manual/Concepts.pod.txt	2004	125	10009	828	11619	925
+lib/POD2/CA/Moose/Manual/Unsweetened.pod.txt	1061	1033	6064	5926	6997	6837

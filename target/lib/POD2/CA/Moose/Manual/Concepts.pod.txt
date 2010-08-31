@@ -157,90 +157,75 @@ Una instància té valors per als seus atributs. Per exemple, una persona espec�
 
 Amb Perl de la vella escola això normalment seria una referència beneïda a una taula de dispersió. Amb Moose no us hauria de caldre mai saber quina és la vostra instància de l'objecte. (D'acord, normalment també és una referència beneïda a una taula de dipsersió a Moose).
 
-=head2 Moose vs old school summary
+=head2 Resum de Moose contra Perl de la vella escola
 
 =over 4
 
-=item * Class
+=item * Classe
 
-A package with no introspection other than mucking about in the symbol
-table.
+Un paquet sense cap altra introspecció a banda de potinejar la taula de símbols.
 
-With Moose, you get well-defined declaration and introspection.
+Amb Moose obteniu una declaració i una introspecció ben definides.
 
-=item * Attributes
+=item * Atributs
 
-Hand-written accessor methods, symbol table hackery, or a helper
-module like C<Class::Accessor>.
+Mètodes accessors escrits a mà, manipulació de la taula de símbols, o un mòdul d'ajuda com ara C<Class::Accessor>.
 
-With Moose, these are declaratively defined, and distinct from
-methods.
+Amb Moose es defineixen d'una forma declarativa i diferent dels mètodes.
 
-=item * Method
+=item * Mètode
 
-These are pretty much the same in Moose as in old school Perl.
+Són pràcticament iguals a Moose que a Perl de la vella escola.
 
-=item * Roles
+=item * Rols
 
-C<Class::Trait> or C<Class::Role>, or maybe C<mixin.pm>.
+C<Class::Trait> o C<Class::Role>, o potser C<mixin.pm>.
 
-With Moose, they're part of the core feature set, and are
-introspectable like everything else.
+Amb Moose són part central del conjunt de característiques i se'n pot fer introspecció com en qualsevol altra cosa.
 
-=item * Method Modifiers
+=item * Modificadors de mètode
 
-Could only be done through serious symbol table wizardry, and you
-probably never saw this before (at least in Perl 5).
+Només es podria aconseguir fent màgia amb la taula de símbols, i segurament no ho havíeu vist mai fins ara (si més no a Perl 5).
 
-=item * Type
+=item * Tipus
 
-Hand-written parameter checking in your C<new()> method and accessors.
+Comprovació a mà dels paràmetres als vostres mètodes C<new()> i als accessors.
 
-With Moose, you define types declaratively, and then use them by name
-in your attributes.
+Amb Moose definiu els tipus de forma declarativa i aleshores els utilitzeu pel nom en els vostres atributs.
 
-=item * Delegation
+=item * Delegació
 
-C<Class::Delegation> or C<Class::Delegator>, but probably even more
-hand-written code.
+C<Class::Delegation> o C<Class::Delegator>, però probablement encara més codi escrit a mà.
 
-With Moose, this is also declarative.
+Amb Moose això també és declaratiu.
 
 =item * Constructor
 
-A C<new()> method which calls C<bless> on a reference.
+Un mètode C<new()> que crida C<bless> sobre una referència.
 
-Comes for free when you define a class with Moose.
+És gratis quan definiu una classe amb Moose.
 
 =item * Destructor
 
-A C<DESTROY()> method.
+Un mètode C<DESTROY()>.
 
-With Moose, this is called C<DEMOLISH()>.
+Amb Moose s'anomena C<DEMOLISH()>.
 
-=item * Object Instance
+=item * Instància de l'objecte
 
-A blessed reference, usually a hash reference.
+Una referència beneïda, normalment una referència a una taula de dispersió.
 
-With Moose, this is an opaque thing which has a bunch of attributes
-and methods, as defined by its class.
+Amb Moose es tracta d'una cosa opaca que té un seguit d'atributs i mètodes, segons s'hagi definit la classe.
 
-=item * Immutabilization
+=item * Immutabilitat
 
-Moose comes with a feature called "immutabilization". When you make
-your class immutable, it means you're done adding methods, attributes,
-roles, etc. This lets Moose optimize your class with a bunch of
-extremely dirty in-place code generation tricks that speed up things
-like object construction and so on.
+Moose té una característica anomenada "immutabilitat". Quan feu la vostra classe immutable, significa que heu acabat d'afegir-hi mètodes, atributs, rols, etc. Això permet que Moose optimitzi la vostra classe amb un seguit de trucs de generació de codi extremadament bruts que acceleren coses com ara la construcció d'objectes i tota la pesca.
 
 =back
 
-=head1 META WHAT?
+=head1 META QUÈ?
 
-A metaclass is a class that describes classes. With Moose, every class
-you define gets a C<meta()> method. It returns a L<Moose::Meta::Class>
-object, which has an introspection API that can tell you about the
-class it represents.
+Una meta-classe és una classe que descriu d'altres classes. Amb Moose cada classe que definiu té un mètode C<meta()>. Retorna un objecte L<Moose::Meta::Class>, que té una API d'introspecció que us pot parlar sobre la classe que representa.
 
   my $meta = User->meta();
 
@@ -256,24 +241,13 @@ class it represents.
       print $method->name, "\n";
   }
 
-Almost every concept we defined earlier has a meta class, so we have
-L<Moose::Meta::Class>, L<Moose::Meta::Attribute>,
-L<Moose::Meta::Method>, L<Moose::Meta::Role>,
-L<Moose::Meta::TypeConstraint>, L<Moose::Meta::Instance>, and so on.
+Gairebé qualsevol concepte que hem definit fins ara té una meta-classe, així tenim L<Moose::Meta::Class>, L<Moose::Meta::Attribute>, L<Moose::Meta::Method>, L<Moose::Meta::Role>, L<Moose::Meta::TypeConstraint>, L<Moose::Meta::Instance>, etc.
 
-=head1 BUT I NEED TO DO IT MY WAY!
+=head1 PERÒ NECESSITO FER-HO A LA MEVA MANERA!
 
-One of the great things about Moose is that if you dig down and find
-that it does something the "wrong way", you can change it by extending
-a metaclass. For example, you can have arrayref based objects, you can
-make your constructors strict (no unknown parameters allowed!), you can
-define a naming scheme for attribute accessors, you can make a class a
-Singleton, and much, much more.
+Una de les coses grans de Moose és que si caveu prou fons i trobeu que fa alguna cosa "malament", podeu canviar-ho extenent una meta-classe. Per exemple, podeu tenir objectes basats en referències a una matriu, podeu fer que els vostres constructors siguin estrictes (no acceptaran paràmetres desconeguts!), podeu definir l'esquema per anomenar els accessors dels atributs, podeu fer que una classe tingui el patró Singleton i moltíssimes més coses.
 
-Many of these extensions require surprisingly small amounts of code,
-and once you've done it once, you'll never have to hand-code "your way
-of doing things" again. Instead you'll just load your favorite
-extensions.
+Sorprenentment, moltes d'aquestes extensions només necessiten quantitats petites de codi i, un cop ho heu fet una vegada, no us caldrà programar a mà "la vostra manera de fer-ho" mai més. Només caldrà que carregueu les vostres extensions preferides.
 
   package MyWay::User;
 
@@ -283,38 +257,28 @@ extensions.
 
   has ...;
 
-=head1 WHAT NEXT?
+=head1 I ARA QUÈ?
 
-So you're sold on Moose. Time to learn how to really use it.
+Ja us hem venut Moose. Ara és hora d'aprendre realment a utilitzar-lo.
 
-If you want to see how Moose would translate directly into old school
-Perl 5 OO code, check out L<Moose::Manual::Unsweetened>. This might be
-helpful for quickly wrapping your brain around some aspects of "the
-Moose way".
+Si voleu veure com faríeu el que feu amb Moose però amb OO de Perl 5 de la vella escola, feu un cop d'ull a L<Moose::Manual::Unsweetened>. Això pot ser útil per tal que el vostre cervell s'acostumi a "la manera de Moose" d'enfocar algunes coses.
 
-Or you can skip that and jump straight to L<Moose::Manual::Classes>
-and the rest of the L<Moose::Manual>.
+O podeu saltar-vos-ho i saltar directament a L<Moose::Manual::Classes> i la resta del L<Moose::Manual>.
 
-After that we recommend that you start with the L<Moose::Cookbook>. If
-you work your way through all the recipes under the basics section,
-you should have a pretty good sense of how Moose works, and all of its
-basic OO features.
+Després, us recomanem que comenceu amb el L<Moose::Cookbook>. Si aconseguiu passar més enllà de les receptes de la secció de conceptes bàsics, hauríeu de tenir una bona idea de com funciona Moose i totes les seves característiques d'OO.
 
-After that, check out the Role recipes. If you're really curious, go
-on and read the Meta and Extending recipes, but those are mostly there
-for people who want to be Moose wizards and change how Moose works.
+Després, feu un cop d'ull a les receptes de rols. Si realment teniu curiositat, seguiu llegint les receptes de Meta i Extending, però aquelles són principalment per volen ser mags de Moose i canviar la manera com funciona Moose.
 
-=head1 AUTHOR
+=head1 AUTOR
 
 Dave Rolsky E<lt>autarch@urth.orgE<gt>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT I LLICÈNCIA
 
 Copyright 2008-2009 by Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+Aquesta llibreria és programari lliure; podeu redistribuir-la i/o modificar-la amb les mateixes condicions del propi Perl.
 
 =cut
