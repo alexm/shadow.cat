@@ -8,7 +8,7 @@ Moose::Manual::Unsweetened - Modismes de Moose idioms en Perl 5 tradicional sens
 
 =head1 DESCRIPCIÓ
 
-Si esteu intentant descobrir què coi fa Moose, i com us pot estalviar temps, trobareu útil veure què està fent Moose <realment> per vosaltres. Aquest document us mostra la traducció de Moose a Perl 5 tradicional.
+Si esteu intentant descobrir què coi fa Moose, i com us pot estalviar temps, trobareu útil veure què està fent Moose )<realment> per vosaltres. Aquest document us mostra la traducció de Moose a Perl 5 tradicional.
 
 =head1 CLASSES I ATRIBUTS
 
@@ -210,7 +210,7 @@ Caram, això ha sigut un bon mos! Una cosa que cal percebre és la quantitat d'e
 
 A més, heu vist el l'error de programació (no intencionat)?
 
-Es troba al mètode C<_validate_birth_date()>. Hauríem de comprovar que el valor a<$birth_date> està realment definit i un objecte abans anem i cridem C<isa()> sobre ell! Deixar fora aquestes comprovacions significa que el nostre codi de validació de dades podria fins i tot provocar que el nostre programa morís. Ups.
+Es troba al mètode C<_validate_birth_date()>. Hauríem de comprovar que el valor a C<$birth_date> està realment definit i un objecte abans anem i cridem C<isa()> sobre ell! Deixar fora aquestes comprovacions significa que el nostre codi de validació de dades podria fins i tot provocar que el nostre programa morís. Ups.
 
 Noteu que si afegim una superclasse a Person haurem de canviar el constructor per justificar-ho.
 
