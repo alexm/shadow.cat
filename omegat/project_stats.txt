@@ -1,15 +1,15 @@
 Project Statistics
 
 Total:
-	Segments	2210
-	Words	12675
-	Characters (without spaces)	70209
-	Characters (including spaces)	79522
+	Segments	1322
+	Words	7870
+	Characters (without spaces)	43141
+	Characters (including spaces)	49069
 Remaining:
-	Segments	1607
-	Words	4764
-	Characters (without spaces)	28988
-	Characters (including spaces)	31294
+	Segments	942
+	Words	2961
+	Characters (without spaces)	17871
+	Characters (including spaces)	19528
 Unique:
 	Segments	902
 	Words	6772
@@ -25,12 +25,6 @@ Individual File Statistics:
 
 File Name	Total Words	Remaining Words	Total Characters (without spaces)	Remaining Characters (without spaces)	Total Characters (including spaces)	Remaining Characters (including spaces)
 col94.html	2575	1017	14341	6052	16195	6476
-col94_body.html	1814	481	9807	2753	11466	3177
-col94_footer.html	102	3	587	28	680	28
-col94_header.html	659	533	3947	3271	4049	3271
 col95.html	2230	786	12727	5065	14258	5290
-col95_body.html	1469	250	8193	1766	9529	1991
-col95_footer.html	102	3	587	28	680	28
-col95_header.html	659	533	3947	3271	4049	3271
 lib/POD2/CA/Moose/Manual/Concepts.pod.txt	2004	125	10009	828	11619	925
 lib/POD2/CA/Moose/Manual/Unsweetened.pod.txt	1061	1033	6064	5926	6997	6837
