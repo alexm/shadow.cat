@@ -14,6 +14,166 @@
   <body>
     <tu>
       <tuv lang="EN-US">
+        <seg>The Moose is Flying (part 1) (Jun 07)</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El Moose està volant (1a part) (juny 07)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Perl Review: the magazine of Perl</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>The Perl Review: la revista de Perl</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Worldwide training and consulting by Perl experts</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Formació i consultoria arreu del món per experts en Perl</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Jump to content...</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Salteu al contingut...</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Columns</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Pictures</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Fotografies</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Columns by Randal</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes d'en Randal</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>LM Columns</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes a LM</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>PJ Columns</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes a PJ</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>UR Columns</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes a UR</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>WT Columns</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes a WT</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>LM Columns by Randal</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Columnes d'en Randal a LM</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Search Stonehenge</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Cerqueu a Stonehenge</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Most-recently modified on 08:05:54 11-May-2007.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Darrera modificació a les 08:05:54 11-May-2007.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copyright Notice</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Avís de copyright</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This text is copyright by InfoStrada Communications, Inc., and is used with their permission.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El copyright d'aquest text és propietat d'InfoStrada Communications, Inc. i s'utilitza amb el seu permís.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Further distribution or use is not permitted.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Qualsevol altre tipus de difusió o ús no està permès.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This text has appeared in an edited form in Linux Magazine magazine.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Aquest text va aparèixer en una edició de la revista Linux Magazine.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>However, the version you are reading here is as the author originally submitted the article for publication, not after their editors applied their creativity.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Tanmateix, la versió que esteu llegint aquí és l'article original tal com l'autor el va enviar per a ser publicat, abans que els editors apliquessin la seva creativitat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please read all the information in the table of contents before using this article.</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>Si us plau, llegiu tota la informació de l'índex abans d'utilitzar aquest article.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Linux Magazine Column 94 (Jun 2007)</seg>
       </tuv>
       <tuv lang="CA">
@@ -794,6 +954,14 @@
       </tuv>
       <tuv lang="CA">
         <seg>Podeu contactar en Schwartz per a comentaris a merlyn@stonehenge.com o al telèfon +1 503 777-0095, i accepta preguntes sobre Perl i d'altres temes relacionats.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Moose is Flying (part 2) (Jul 07)</seg>
+      </tuv>
+      <tuv lang="CA">
+        <seg>El Moose està volant (2a part) (juliol 07)</seg>
       </tuv>
     </tu>
     <tu>
