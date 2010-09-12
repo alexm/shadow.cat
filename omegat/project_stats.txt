@@ -1,36 +1,36 @@
 Project Statistics
 
 Total:
-	Segments	2206
-	Words	12667
-	Characters (without spaces)	70105
-	Characters (including spaces)	79418
+	Segments	2210
+	Words	12675
+	Characters (without spaces)	70209
+	Characters (including spaces)	79522
 Remaining:
-	Segments	1605
-	Words	4768
-	Characters (without spaces)	28944
-	Characters (including spaces)	31260
+	Segments	1607
+	Words	4764
+	Characters (without spaces)	28988
+	Characters (including spaces)	31294
 Unique:
-	Segments	901
-	Words	6770
-	Characters (without spaces)	36587
-	Characters (including spaces)	42050
+	Segments	902
+	Words	6772
+	Characters (without spaces)	36613
+	Characters (including spaces)	42076
 Unique Remaining:
 	Segments	549
-	Words	2112
-	Characters (without spaces)	12690
-	Characters (including spaces)	14097
+	Words	2108
+	Characters (without spaces)	12686
+	Characters (including spaces)	14088
 
 Individual File Statistics:
 
 File Name	Total Words	Remaining Words	Total Characters (without spaces)	Remaining Characters (without spaces)	Total Characters (including spaces)	Remaining Characters (including spaces)
-col94.html	2573	1015	14315	6026	16169	6450
+col94.html	2575	1017	14341	6052	16195	6476
 col94_body.html	1814	481	9807	2753	11466	3177
 col94_footer.html	102	3	587	28	680	28
-col94_header.html	657	531	3921	3245	4023	3245
-col95.html	2228	790	12701	5069	14232	5299
-col95_body.html	1469	256	8193	1796	9529	2026
+col94_header.html	659	533	3947	3271	4049	3271
+col95.html	2230	786	12727	5065	14258	5290
+col95_body.html	1469	250	8193	1766	9529	1991
 col95_footer.html	102	3	587	28	680	28
-col95_header.html	657	531	3921	3245	4023	3245
+col95_header.html	659	533	3947	3271	4049	3271
 lib/POD2/CA/Moose/Manual/Concepts.pod.txt	2004	125	10009	828	11619	925
 lib/POD2/CA/Moose/Manual/Unsweetened.pod.txt	1061	1033	6064	5926	6997	6837

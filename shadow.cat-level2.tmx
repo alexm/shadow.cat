@@ -966,6 +966,14 @@
     </tu>
     <tu>
       <tuv xml:lang="EN-US">
+        <seg>Linux Magazine Column 95 (Jul 2007)</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Columna 95 del Linux Magazine (juliol de 2007)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
         <seg>[suggested title: ``The Moose is Flying (part 2)'']</seg>
       </tuv>
       <tuv xml:lang="CA">
