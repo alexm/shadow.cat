@@ -14,646 +14,6 @@
   <body>
     <tu>
       <tuv xml:lang="EN-US">
-        <seg>[suggested title: ``The Moose is Flying (part 2)'']</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>[títol suggerit: «El Moose està volant (2a part)»]</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Last month, I introduced the <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> object system by walking through the code developed in the <bpt i='1' x='1'>&lt;e1&gt;</bpt>perlboot<ept i='1'>&lt;/e1&gt;</ept> manpage, rewriting it to use Moose.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El mes passat, vaig introduir el sistema d'objectes <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> recorrent el codi desenvolupat a la pàgina de manual de <bpt i='1' x='1'>&lt;e1&gt;</bpt>perlboot<ept i='1'>&lt;/e1&gt;</ept> , reescrivint-ho per utilitzar Moose.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Continuing from that discussion, let's look at some of the features I didn't cover last month.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Continuant a partir d'aquella discussió, fem un cop d'ull a algunes de les característiques que no vaig cobrir el mes passat.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Our <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> role included attributes of <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept>, and <bpt i='2' x='2'>&lt;c2&gt;</bpt>color<ept i='2'>&lt;/c2&gt;</ept>, and actions of <bpt i='3' x='3'>&lt;c3&gt;</bpt>speak<ept i='3'>&lt;/c3&gt;</ept> and <bpt i='4' x='4'>&lt;c4&gt;</bpt>eat<ept i='4'>&lt;/c4&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El nostre rol <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> incloïa atributs de <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept> i <bpt i='2' x='2'>&lt;c2&gt;</bpt>color<ept i='2'>&lt;/c2&gt;</ept>, i mètodes de <bpt i='3' x='3'>&lt;c3&gt;</bpt>speak<ept i='3'>&lt;/c3&gt;</ept> i <bpt i='4' x='4'>&lt;c4&gt;</bpt>eat<ept i='4'>&lt;/c4&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can add a birthdate attribute to the mix with:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem afegir un atribut d'aniversari a la barreja amb:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>As we don't want to be able to change the birthdate, we'll make it read-only.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Com que no volem que es pugui canviar la data d'aniversari, farem que sigui no modificable.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>By default, this attribute accepts any scalar, so these are all equally valid:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per defecte, aquest atribut accepta qualsevol escalar, així que aquests són tots equivalentment vàlids:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can get a bit of help from Moose to narrow down the permissible type of this new birthdate attribute using Moose's typing system:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem aconseguir una mica d'ajuda de Moose per reduir el tipus permès d'aquest nou atribut aniversari utilitzant el sistema de tipus de Moose:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>isa<ept i='0'>&lt;/c0&gt;</ept> parameter here declares that the <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept> parameter must be a DateTime object, or at least something that responds true to <bpt i='2' x='2'>&lt;c2&gt;</bpt>UNIVERSAL::isa($thing, &quot;DateTime&quot;)<ept i='2'>&lt;/c2&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El paràmetre <bpt i='0' x='0'>&lt;c0&gt;</bpt>isa<ept i='0'>&lt;/c0&gt;</ept> declara aquí que el paràmetre  <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept>  ha de ser un objecte DateTime, o com a mínim algun tipus que respongui cert a <bpt i='2' x='2'>&lt;c2&gt;</bpt>UNIVERSAL::isa($thing, &quot;DateTime&quot;)<ept i='2'>&lt;/c2&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Now, if we try to put anything in this <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> attribute other than a <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, we get a run-time error.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Ara, si intentem assignar qualsevol cosa a l'atribut <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> que no sigui un <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, obtenim un error en temps d'execució.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>So, this fails:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Així doncs, això falla:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>But this succeeds:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Però això funciona:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> string for <bpt i='1' x='1'>&lt;c1&gt;</bpt>isa<ept i='1'>&lt;/c1&gt;</ept> refers here to the Perl class.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>La cadena <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> per <bpt i='1' x='1'>&lt;c1&gt;</bpt>isa<ept i='1'>&lt;/c1&gt;</ept> es refereix aquí a la classe de Perl.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>However, we can also define this as an artificial Moose type:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Tanmateix, també podem definir això com un tipus de Moose artificial:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>This works like before, but now identifies <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> as a Moose-type.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Això funciona com abans, però ara identifica <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> com un tipus de Moose.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The type is created by starting with any <bpt i='1' x='1'>&lt;c1&gt;</bpt>Object<ept i='1'>&lt;/c1&gt;</ept>, and then requiring that this object pass the additional qualification of being a subclass of Perl's <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime<ept i='2'>&lt;/c2&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El tipus es crea començant amb qualsevol <bpt i='1' x='1'>&lt;c1&gt;</bpt>Object<ept i='1'>&lt;/c1&gt;</ept> i després requering que aquest objecte passi la qualificació adicional de ser una subclasse de <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime<ept i='2'>&lt;/c2&gt;</ept> de Perl.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>At this point, we could continue to use this Moose-style DateTime type as we had before.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>En aquest punt, podem continuar utilitzant aquest DateTime de Moose com ho fèiem abans.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>But once we've done this, we can further subtype the type.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Una vegada hem fet això, podem derivar un subtipus del tipus.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>For example, we can require that the date be a historical date (before now):</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per exemple, podem requerir que la data sigui històrica (prèvia al present):</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Now, not just any DateTime will do.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Ara no funcionarà qualsevol DateTime.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>It has to be something that isn't in the future.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Ha de ser algun moment que no sigui al futur.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The expression in <bpt i='0' x='0'>&lt;c0&gt;</bpt>where<ept i='0'>&lt;/c0&gt;</ept> can be any expression returning a true/false value, using <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> as a proxy for the object in question.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>L'expressió al <bpt i='0' x='0'>&lt;c0&gt;</bpt>where<ept i='0'>&lt;/c0&gt;</ept> pot ser qualsevol expressió que retorni un valor cert/fals, utilitzant <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> com a proxy per a l'objecte en qüestió.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>It'd be easier if we could still use casual forms like <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> and <bpt i='1' x='1'>&lt;c1&gt;</bpt>3/14/1929<ept i='1'>&lt;/c1&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Seria més senzill encara si poguèssim utilitzar expressions informals com <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> i <bpt i='1' x='1'>&lt;c1&gt;</bpt>3/14/1929<ept i='1'>&lt;/c1&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>These are both understood by <bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg><bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept> enten aquestes dues.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We could parse the strings with <bpt i='3' x='3'>&lt;c3&gt;</bpt>Date::Manip<ept i='3'>&lt;/c3&gt;</ept>, then pull out the component values and hand them to <bpt i='4' x='4'>&lt;c4&gt;</bpt>DateTime<ept i='4'>&lt;/c4&gt;</ept>, but luckily, there's already a module to do that: <bpt i='5' x='5'>&lt;c5&gt;</bpt>DateTime::Format::DateManip<ept i='5'>&lt;/c5&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem analitzar les cadenes amb <bpt i='3' x='3'>&lt;c3&gt;</bpt>Date::Manip<ept i='3'>&lt;/c3&gt;</ept>, extreure els valors dels components i després entregar-los a <bpt i='4' x='4'>&lt;c4&gt;</bpt>DateTime<ept i='4'>&lt;/c4&gt;</ept>, però afortunadament, ja hi ha un mòdul que fa això: <bpt i='5' x='5'>&lt;c5&gt;</bpt>DateTime::Format::DateManip<ept i='5'>&lt;/c5&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Not bad.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>No està malament.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Our newbie horse is born yesterday, as we expect.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El nostre aprenent cavall va nèixer ahir, tal com esperàvem.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>But it'd be nice to just drop <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> into the slot and have it do all of that for us.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Però estaria bé simplement posar <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> al paràmetre i deixar que ho faci tot per nosaltres.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>And with <bpt i='1' x='1'>&lt;e1&gt;</bpt>coercions<ept i='1'>&lt;/e1&gt;</ept>, we can.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>I amb <bpt i='1' x='1'>&lt;e1&gt;</bpt>coercions<ept i='1'>&lt;/e1&gt;</ept>, podem fer-ho.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Since passing a simple string as the birthtime is illegal, we can inform Moose that it should take that string and run it through <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime::Format::DateManip<ept i='0'>&lt;/c0&gt;</ept> automatically:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Com que passar una cadena com a aniversari no està permés, podem indicar a Moose que agafi la cadena i la passi per  <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime::Format::DateManip<ept i='0'>&lt;/c0&gt;</ept> automàticament:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>via<ept i='0'>&lt;/c0&gt;</ept> code block takes <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> as the input value, which is expected to be a string (<bpt i='2' x='2'>&lt;c2&gt;</bpt>Str<ept i='2'>&lt;/c2&gt;</ept>).</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El bloc <bpt i='0' x='0'>&lt;c0&gt;</bpt>via<ept i='0'>&lt;/c0&gt;</ept> agafa <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> com un valor d'entrada, que s'espera que sigui una cadena (<bpt i='2' x='2'>&lt;c2&gt;</bpt>Str<ept i='2'>&lt;/c2&gt;</ept>).</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The last expression evaluated in the code is the new <bpt i='3' x='3'>&lt;c3&gt;</bpt>HistoricalDateTime<ept i='3'>&lt;/c3&gt;</ept> value.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>L'última expressió avaluada al codi és el nou valor <bpt i='3' x='3'>&lt;c3&gt;</bpt>HistoricalDateTime<ept i='3'>&lt;/c3&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We then permit this coercion to be used by adding <bpt i='4' x='4'>&lt;c4&gt;</bpt>coerce<ept i='4'>&lt;/c4&gt;</ept> into the attribute declaration:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Després permetem l'ús d'aquesta coacció afegint <bpt i='4' x='4'>&lt;c4&gt;</bpt>coerce<ept i='4'>&lt;/c4&gt;</ept>  a la declaració de l'atribut:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Now, the <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> slot accepts either an explicit <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept> as before, or a simple string.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Ara el paràmetre <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> accepta o bé un <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept> explícit com abans, o bé una cadena simple.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The string must be acceptable to <bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept>, which will be used to convert the string into a <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept> object as our object is created.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>La cadena ha de ser acceptable per <bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept>, que serà utilitzat per convertir la cadena a un objecte <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept> quan el nostre objecte sigui creat.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Also, because the type constraint is still in place, the verification to ensure the result is a historical date is still active.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>A més, com que la coacció de tipus està a lloc, la verificació per assegurar que el resultat és una data històrica encara està activa.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Besides the named classes and <bpt i='0' x='0'>&lt;c0&gt;</bpt>Str<ept i='0'>&lt;/c0&gt;</ept>, <bpt i='1' x='1'>&lt;c1&gt;</bpt>Moose::Util::TypeConstraints<ept i='1'>&lt;/c1&gt;</ept> also establishes types of things like <bpt i='2' x='2'>&lt;c2&gt;</bpt>Bool<ept i='2'>&lt;/c2&gt;</ept> and <bpt i='3' x='3'>&lt;c3&gt;</bpt>HashRef<ept i='3'>&lt;/c3&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>A més dels noms de les classes i <bpt i='0' x='0'>&lt;c0&gt;</bpt>Str<ept i='0'>&lt;/c0&gt;</ept>, <bpt i='1' x='1'>&lt;c1&gt;</bpt>Moose::Util::TypeConstraints<ept i='1'>&lt;/c1&gt;</ept> també estableix els tipus de coses com <bpt i='2' x='2'>&lt;c2&gt;</bpt>Bool<ept i='2'>&lt;/c2&gt;</ept> i <bpt i='3' x='3'>&lt;c3&gt;</bpt>HashRef<ept i='3'>&lt;/c3&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We could even have multiple coercions defined, as long as they are distinct.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Fins i tot podríem tenir múltiples coaccions definides, sempre i quan siguin diferents.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>For example, we could use a hashref in the birthtime slot to indicate that we are passing key/value pairs to be handed to a <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> constructor directly:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per exemple, podem utilitzar una referència a una taula de dispersió al paràmetre aniversari per indicar que estem passant parells clau/valor perquè siguin entregats directament a un constructor <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept>:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>And now we can use a hashref to define the birthdate:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>I ara podem definir una referència a una taula de dispersió per definir l'aniversari:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>If the value for <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> is a <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, it's used directly.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Si el valor per a <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> és un <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, s'utilitza directament.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>If it's a string, it's passed to <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime::Format::DateManip<ept i='2'>&lt;/c2&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Si és una cadena, es passa a <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime::Format::DateManip<ept i='2'>&lt;/c2&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>And if it's a hashref, it's passed directly as a flattened list to the <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept> constructor.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>I si és una referència a una taula de dispersió, es passa directament com una llista aplanada al constructor <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Very cool.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Genial.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The value we specify for a <bpt i='0' x='0'>&lt;c0&gt;</bpt>default<ept i='0'>&lt;/c0&gt;</ept> is subject to the same coercions and type checking.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El valor que especifiquem per a <bpt i='0' x='0'>&lt;c0&gt;</bpt>default<ept i='0'>&lt;/c0&gt;</ept> està subjecte a les mateixes coaccions i comprovacions de tipus.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can update <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept> as:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem actualitzar <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept> a:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>And now our animals default to being ``born yesterday''.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>I ara, el valor per defecte dels animals a ``nascut ahir''.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Note that the default value is still subject to the type constraints, so if we replace <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> with <bpt i='1' x='1'>&lt;c1&gt;</bpt>tomorrow<ept i='1'>&lt;/c1&gt;</ept>, the default value will be rejected properly.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Observeu que el valor per defecte encara està subjecte a les restriccions de tipus, per tant si substituïm <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> per <bpt i='1' x='1'>&lt;c1&gt;</bpt>tomorrow<ept i='1'>&lt;/c1&gt;</ept>, el valor per defecte serà rebutjat.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Note that the coercion happens as each object is created, so a default value of <bpt i='2' x='2'>&lt;c2&gt;</bpt>one minute ago<ept i='2'>&lt;/c2&gt;</ept> will give us a new time each time it is called.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Observeu que la coacció passa a mesura que cada objecte es crea, per tant el valor per defecte <bpt i='2' x='2'>&lt;c2&gt;</bpt>one minute ago<ept i='2'>&lt;/c2&gt;</ept> ens donarà una data diferent cada vegada que sigui cridat.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>While we're on things we can do to attributes, another interesting item is <bpt i='0' x='0'>&lt;c0&gt;</bpt>lazy<ept i='0'>&lt;/c0&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Mentre estudiem què podem fer als atributs, un altre element interessant és <bpt i='0' x='0'>&lt;c0&gt;</bpt>lazy<ept i='0'>&lt;/c0&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>If the default value is expensive to compute, we can say ``don't really do this until you need to do it''.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Si el valor per defecte és car de calcular, podem dir ``no facis això fins que ho necessitis''.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>For example, turning <bpt i='1' x='1'>&lt;c1&gt;</bpt>yesterday<ept i='1'>&lt;/c1&gt;</ept> into a DateTime is slightly expensive, so we can flag that as lazy:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per exemple, convertir <bpt i='1' x='1'>&lt;c1&gt;</bpt>yesterday<ept i='1'>&lt;/c1&gt;</ept> a un objecte DateTime és una mica car, així que ho podem marcar com lazy:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Speaking of great support, as I was writing that last paragraph, I noticed a bug in the result, and chatting with Stevan on IRC got it fixed before I could turn this article in.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>I parlant de suport fantàstic, mentre escrivia aquest últim pàrraf vaig descobrir un error de programació, i commentar-ho amb Stevan a l'IRC ho va solucionar abans que jo entregués l'article.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Yeay.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Visca.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Anything built with <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> has a very high degree of introspection available.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Qualsevol cosa construïda amb <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> té disponible un grau molt alt d'introspecció.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>For example, we can ask one of our animal friends to give us the <bpt i='1' x='1'>&lt;c1&gt;</bpt>meta<ept i='1'>&lt;/c1&gt;</ept> object, with which we can make further requests:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per exemple, podem demanar a un dels nostres amics animals que ens doni l'objecte <bpt i='1' x='1'>&lt;c1&gt;</bpt>meta<ept i='1'>&lt;/c1&gt;</ept>, amb el què podrem fer més peticions:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can ask the horse for the <bpt i='2' x='2'>&lt;e2&gt;</bpt>roles<ept i='2'>&lt;/e2&gt;</ept>:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem demanar al cavall per els <bpt i='2' x='2'>&lt;e2&gt;</bpt>roles<ept i='2'>&lt;/e2&gt;</ept>:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>In this case, we see that we've mixed in one role (of type <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Role<ept i='0'>&lt;/c0&gt;</ept>, and get the name with:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>En aquest cas, veiem que hem obtingut un rol (de tipus <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Role<ept i='0'>&lt;/c0&gt;</ept>), i aconseguit el nom amb:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>which gives us <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> as we might expect.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>cosa que ens dona un <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> tal com esperàvem.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can also ask the meta object for all applicable methods:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem demanar a l'objecte meta tots els mètodes aplicables:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>which returns</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>cosa que retorna</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Nice.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Genial.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Not sure what BEGIN is doing in there, but the rest are things that we've defined.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>No estic segur de què fa BEGIN aquí, però la resta són elements que hem definit.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Many of these methods relate to the attributes, but we'd can query those definitively using <bpt i='0' x='0'>&lt;c0&gt;</bpt>compute_all_applicable_attributes<ept i='0'>&lt;/c0&gt;</ept> instead:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Molts d'aquests mètodes es relacionen amb atributs, però podem demanar aquests definitivament utilitzant <bpt i='0' x='0'>&lt;c0&gt;</bpt>compute_all_applicable_attributes<ept i='0'>&lt;/c0&gt;</ept>:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>The result is a set of <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Attribute<ept i='0'>&lt;/c0&gt;</ept> objects.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>El resultat és un conjunt d'objectes <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Attribute<ept i='0'>&lt;/c0&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can map them through <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept> as before to get the names:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Podem utilitzar el «map« sobre <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept> com abans per aconseguir els noms:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>We can also see if they have setters:</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>També podem veure si tenen «setters»:</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Note that only <bpt i='0' x='0'>&lt;c0&gt;</bpt>color<ept i='0'>&lt;/c0&gt;</ept> has a setter: the other two are read-only, so this makes sense.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Observeu que només <bpt i='0' x='0'>&lt;c0&gt;</bpt>color<ept i='0'>&lt;/c0&gt;</ept> té un «setter»: els altres dos no són modificables, així que això té sentit.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>As noted above, Moose is still being actively developed, but is <bpt i='0' x='0'>&lt;e0&gt;</bpt>production ready<ept i='0'>&lt;/e0&gt;</ept> as long as you stick with things that work.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Tal com s'ha comentat abans, Moose encara està sent desenvolupat de forma activa, però és <bpt i='0' x='0'>&lt;e0&gt;</bpt>production ready<ept i='0'>&lt;/e0&gt;</ept> mentre us mantingueu en les coses que funcionen.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>You'll find the latest Moose in the CPAN, along with some other core plugins, typically in the <bpt i='1' x='1'>&lt;c1&gt;</bpt>MooseX<ept i='1'>&lt;/c1&gt;</ept> namespace.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Trobareu l'últim Moose al CPAN, juntament amb algun altre complement base, normalment a l'espai de noms <bpt i='1' x='1'>&lt;c1&gt;</bpt>MooseX<ept i='1'>&lt;/c1&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>For example, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Getopt<ept i='0'>&lt;/c0&gt;</ept> allows you to define your <bpt i='1' x='1'>&lt;c1&gt;</bpt>@ARGV<ept i='1'>&lt;/c1&gt;</ept> processing using type coercion, type constraints, and all that jazz.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per exemple, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Getopt<ept i='0'>&lt;/c0&gt;</ept> us permet definir el vostre procés de <bpt i='1' x='1'>&lt;c1&gt;</bpt>@ARGV<ept i='1'>&lt;/c1&gt;</ept> utilitzant coacció de tipus, restriccions de tipus, i totes aquestes coses.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>I haven't had time to play with that yet, but it's on my to-do list, so perhaps I'll cover that in a future column.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>No he tingut temps per jugar-hi encara, però està a la meva llista de coses pendents, així que potser en parlaré a una columna futura.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Similarly, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Object::Pluggable<ept i='0'>&lt;/c0&gt;</ept> makes it easy to write classes that are <bpt i='1' x='1'>&lt;e1&gt;</bpt>pluggable<ept i='1'>&lt;/e1&gt;</ept>, meaning that they can work well with plugins that define additional methods and attributes.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>De forma similar, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Object::Pluggable<ept i='0'>&lt;/c0&gt;</ept> simplifica l'escriptura de classes que són <bpt i='1' x='1'>&lt;e1&gt;</bpt>pluggable<ept i='1'>&lt;/e1&gt;</ept>, que significa que poden treballar bé amb complements que defineixen mètodes i atributs adicionals.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>(Think of a generic web server or IRC bot object that has individually selectable additional behaviors.) Again, I'm just noticing these, and they look like they are worthy of their own descriptions later.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>(Penseu en un servidor web genèric o un «bot« IRC que té comportaments adicionals seleccionables individualment.) De nou, m'estic adonant ara d'aquests, i sembla que valgui la pena fer-ne una descripció especial més tard.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Also note that <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> is itself built on <bpt i='1' x='1'>&lt;c1&gt;</bpt>Class::MOP<ept i='1'>&lt;/c1&gt;</ept>, which is a framework for making class frameworks.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Observeu a més que el mateix <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> està construit sobre <bpt i='1' x='1'>&lt;c1&gt;</bpt>Class::MOP<ept i='1'>&lt;/c1&gt;</ept>, que és un entorn de treball per crear entorns de treball de classes.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Perhaps other projects besides Moose will be using Class::MOP as a starting point as well.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Potser altres projectes a més de Moose també utilitzaran Class::MOP com a punt de partida.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>For example, the infrastructure of <bpt i='2' x='2'>&lt;c2&gt;</bpt>Class::Prototyped<ept i='2'>&lt;/c2&gt;</ept> (which I use in my own <bpt i='3' x='3'>&lt;c3&gt;</bpt>CGI::Prototype<ept i='3'>&lt;/c3&gt;</ept>) might be built on <bpt i='4' x='4'>&lt;c4&gt;</bpt>Class::MOP<ept i='4'>&lt;/c4&gt;</ept>, giving it more flexibility and robustness.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Per exemple, l'infraestructura de <bpt i='2' x='2'>&lt;c2&gt;</bpt>Class::Prototyped<ept i='2'>&lt;/c2&gt;</ept> (que utilitzo al meu <bpt i='3' x='3'>&lt;c3&gt;</bpt>CGI::Prototype<ept i='3'>&lt;/c3&gt;</ept>) podria construir-se sobre <bpt i='4' x='4'>&lt;c4&gt;</bpt>Class::MOP<ept i='4'>&lt;/c4&gt;</ept>, proporcionant més flexibilitat i robustesa.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>I hope you've enjoyed this two-part introduction to <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept>.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Espero que hagueu gaudit d'aquesta introducció en dues parts a <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept>.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Have fun playing with a production-ready flexible object-building system.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Divertiu-vos jugant amb un sistema de construcció d'objectes flexible preparat per a producció.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>Until next time, enjoy!</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Fins aleshores, gaudiu!</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
         <seg>Linux Magazine Column 94 (Jun 2007)</seg>
       </tuv>
       <tuv xml:lang="CA">
@@ -1406,10 +766,707 @@
     </tu>
     <tu>
       <tuv xml:lang="EN-US">
+        <seg>Randal L. Schwartz is a renowned expert on the Perl programming language (the lifeblood of the Internet), having contributed to a dozen top-selling books on the subject, and over 200 magazine articles.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Randal L. Schwartz és un expert de renom sobre el llenguatge de programació Perl (l'essència vital d'Internet), que ha contribuït en una dotzena de llibres supervendes en la matèria i més de 200 articles en revistes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Schwartz runs a Perl training and consulting company (Stonehenge Consulting Services, Inc of Portland, Oregon), and is a highly sought-after speaker for his masterful stage combination of technical skill, comedic timing, and crowd rapport.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>En Schwartz té una empresa de formació i consultoria en Perl (Stonehenge Consulting Services, Inc de Portland, Oregon) i és un conferenciant molt buscat gràcies a la seva destresa damunt l'escenari, que combina coneixements tècnics, pauses dramàtiques i sintonia amb el públic.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And he's a pretty good Karaoke singer, winning contests regularly.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I és força bon cantant de Karaoke, que guanya concursos sovint.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Schwartz can be reached for comment at <bpt i='0' x='0'>&lt;a0&gt;</bpt>merlyn@stonehenge.com<ept i='0'>&lt;/a0&gt;</ept> or +1 503 777-0095, and welcomes questions on Perl and other related topics.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podeu contactar en Schwartz per a comentaris a <bpt i='0' x='0'>&lt;a0&gt;</bpt>merlyn@stonehenge.com<ept i='0'>&lt;/a0&gt;</ept> o al telèfon +1 503 777-0095, i accepta preguntes sobre Perl i d'altres temes relacionats.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[suggested title: ``The Moose is Flying (part 2)'']</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>[títol suggerit: «El Moose està volant (2a part)»]</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Last month, I introduced the <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> object system by walking through the code developed in the <bpt i='1' x='1'>&lt;e1&gt;</bpt>perlboot<ept i='1'>&lt;/e1&gt;</ept> manpage, rewriting it to use Moose.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El mes passat, vaig introduir el sistema d'objectes <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> recorrent el codi desenvolupat a la pàgina de manual de <bpt i='1' x='1'>&lt;e1&gt;</bpt>perlboot<ept i='1'>&lt;/e1&gt;</ept> , reescrivint-ho per utilitzar Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Continuing from that discussion, let's look at some of the features I didn't cover last month.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Continuant a partir d'aquella discussió, fem un cop d'ull a algunes de les característiques que no vaig cobrir el mes passat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> role included attributes of <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept>, and <bpt i='2' x='2'>&lt;c2&gt;</bpt>color<ept i='2'>&lt;/c2&gt;</ept>, and actions of <bpt i='3' x='3'>&lt;c3&gt;</bpt>speak<ept i='3'>&lt;/c3&gt;</ept> and <bpt i='4' x='4'>&lt;c4&gt;</bpt>eat<ept i='4'>&lt;/c4&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El nostre rol <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> incloïa atributs de <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept> i <bpt i='2' x='2'>&lt;c2&gt;</bpt>color<ept i='2'>&lt;/c2&gt;</ept>, i mètodes de <bpt i='3' x='3'>&lt;c3&gt;</bpt>speak<ept i='3'>&lt;/c3&gt;</ept> i <bpt i='4' x='4'>&lt;c4&gt;</bpt>eat<ept i='4'>&lt;/c4&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can add a birthdate attribute to the mix with:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem afegir un atribut d'aniversari a la barreja amb:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As we don't want to be able to change the birthdate, we'll make it read-only.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Com que no volem que es pugui canviar la data d'aniversari, farem que sigui no modificable.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By default, this attribute accepts any scalar, so these are all equally valid:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per defecte, aquest atribut accepta qualsevol escalar, així que aquests són tots equivalentment vàlids:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can get a bit of help from Moose to narrow down the permissible type of this new birthdate attribute using Moose's typing system:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem aconseguir una mica d'ajuda de Moose per reduir el tipus permès d'aquest nou atribut aniversari utilitzant el sistema de tipus de Moose:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>isa<ept i='0'>&lt;/c0&gt;</ept> parameter here declares that the <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept> parameter must be a DateTime object, or at least something that responds true to <bpt i='2' x='2'>&lt;c2&gt;</bpt>UNIVERSAL::isa($thing, &quot;DateTime&quot;)<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El paràmetre <bpt i='0' x='0'>&lt;c0&gt;</bpt>isa<ept i='0'>&lt;/c0&gt;</ept> declara aquí que el paràmetre  <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept>  ha de ser un objecte DateTime, o com a mínim algun tipus que respongui cert a <bpt i='2' x='2'>&lt;c2&gt;</bpt>UNIVERSAL::isa($thing, &quot;DateTime&quot;)<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now, if we try to put anything in this <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> attribute other than a <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, we get a run-time error.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Ara, si intentem assignar qualsevol cosa a l'atribut <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> que no sigui un <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, obtenim un error en temps d'execució.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So, this fails:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Així doncs, això falla:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But this succeeds:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Però això funciona:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> string for <bpt i='1' x='1'>&lt;c1&gt;</bpt>isa<ept i='1'>&lt;/c1&gt;</ept> refers here to the Perl class.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>La cadena <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> per <bpt i='1' x='1'>&lt;c1&gt;</bpt>isa<ept i='1'>&lt;/c1&gt;</ept> es refereix aquí a la classe de Perl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, we can also define this as an artificial Moose type:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tanmateix, també podem definir això com un tipus de Moose artificial:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This works like before, but now identifies <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> as a Moose-type.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Això funciona com abans, però ara identifica <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> com un tipus de Moose.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The type is created by starting with any <bpt i='1' x='1'>&lt;c1&gt;</bpt>Object<ept i='1'>&lt;/c1&gt;</ept>, and then requiring that this object pass the additional qualification of being a subclass of Perl's <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El tipus es crea començant amb qualsevol <bpt i='1' x='1'>&lt;c1&gt;</bpt>Object<ept i='1'>&lt;/c1&gt;</ept> i després requering que aquest objecte passi la qualificació adicional de ser una subclasse de <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime<ept i='2'>&lt;/c2&gt;</ept> de Perl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>At this point, we could continue to use this Moose-style DateTime type as we had before.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>En aquest punt, podem continuar utilitzant aquest DateTime de Moose com ho fèiem abans.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But once we've done this, we can further subtype the type.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Una vegada hem fet això, podem derivar un subtipus del tipus.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we can require that the date be a historical date (before now):</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, podem requerir que la data sigui històrica (prèvia al present):</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now, not just any DateTime will do.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Ara no funcionarà qualsevol DateTime.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It has to be something that isn't in the future.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Ha de ser algun moment que no sigui al futur.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The expression in <bpt i='0' x='0'>&lt;c0&gt;</bpt>where<ept i='0'>&lt;/c0&gt;</ept> can be any expression returning a true/false value, using <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> as a proxy for the object in question.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>L'expressió al <bpt i='0' x='0'>&lt;c0&gt;</bpt>where<ept i='0'>&lt;/c0&gt;</ept> pot ser qualsevol expressió que retorni un valor cert/fals, utilitzant <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> com a proxy per a l'objecte en qüestió.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It'd be easier if we could still use casual forms like <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> and <bpt i='1' x='1'>&lt;c1&gt;</bpt>3/14/1929<ept i='1'>&lt;/c1&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Seria més senzill encara si poguèssim utilitzar expressions informals com <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> i <bpt i='1' x='1'>&lt;c1&gt;</bpt>3/14/1929<ept i='1'>&lt;/c1&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These are both understood by <bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg><bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept> enten aquestes dues.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We could parse the strings with <bpt i='3' x='3'>&lt;c3&gt;</bpt>Date::Manip<ept i='3'>&lt;/c3&gt;</ept>, then pull out the component values and hand them to <bpt i='4' x='4'>&lt;c4&gt;</bpt>DateTime<ept i='4'>&lt;/c4&gt;</ept>, but luckily, there's already a module to do that: <bpt i='5' x='5'>&lt;c5&gt;</bpt>DateTime::Format::DateManip<ept i='5'>&lt;/c5&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem analitzar les cadenes amb <bpt i='3' x='3'>&lt;c3&gt;</bpt>Date::Manip<ept i='3'>&lt;/c3&gt;</ept>, extreure els valors dels components i després entregar-los a <bpt i='4' x='4'>&lt;c4&gt;</bpt>DateTime<ept i='4'>&lt;/c4&gt;</ept>, però afortunadament, ja hi ha un mòdul que fa això: <bpt i='5' x='5'>&lt;c5&gt;</bpt>DateTime::Format::DateManip<ept i='5'>&lt;/c5&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Not bad.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>No està malament.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our newbie horse is born yesterday, as we expect.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El nostre aprenent cavall va nèixer ahir, tal com esperàvem.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But it'd be nice to just drop <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> into the slot and have it do all of that for us.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Però estaria bé simplement posar <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> al paràmetre i deixar que ho faci tot per nosaltres.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And with <bpt i='1' x='1'>&lt;e1&gt;</bpt>coercions<ept i='1'>&lt;/e1&gt;</ept>, we can.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I amb <bpt i='1' x='1'>&lt;e1&gt;</bpt>coercions<ept i='1'>&lt;/e1&gt;</ept>, podem fer-ho.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since passing a simple string as the birthtime is illegal, we can inform Moose that it should take that string and run it through <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime::Format::DateManip<ept i='0'>&lt;/c0&gt;</ept> automatically:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Com que passar una cadena com a aniversari no està permés, podem indicar a Moose que agafi la cadena i la passi per  <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime::Format::DateManip<ept i='0'>&lt;/c0&gt;</ept> automàticament:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The <bpt i='0' x='0'>&lt;c0&gt;</bpt>via<ept i='0'>&lt;/c0&gt;</ept> code block takes <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> as the input value, which is expected to be a string (<bpt i='2' x='2'>&lt;c2&gt;</bpt>Str<ept i='2'>&lt;/c2&gt;</ept>).</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El bloc <bpt i='0' x='0'>&lt;c0&gt;</bpt>via<ept i='0'>&lt;/c0&gt;</ept> agafa <bpt i='1' x='1'>&lt;c1&gt;</bpt>$_<ept i='1'>&lt;/c1&gt;</ept> com un valor d'entrada, que s'espera que sigui una cadena (<bpt i='2' x='2'>&lt;c2&gt;</bpt>Str<ept i='2'>&lt;/c2&gt;</ept>).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The last expression evaluated in the code is the new <bpt i='3' x='3'>&lt;c3&gt;</bpt>HistoricalDateTime<ept i='3'>&lt;/c3&gt;</ept> value.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>L'última expressió avaluada al codi és el nou valor <bpt i='3' x='3'>&lt;c3&gt;</bpt>HistoricalDateTime<ept i='3'>&lt;/c3&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We then permit this coercion to be used by adding <bpt i='4' x='4'>&lt;c4&gt;</bpt>coerce<ept i='4'>&lt;/c4&gt;</ept> into the attribute declaration:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Després permetem l'ús d'aquesta coacció afegint <bpt i='4' x='4'>&lt;c4&gt;</bpt>coerce<ept i='4'>&lt;/c4&gt;</ept>  a la declaració de l'atribut:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now, the <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> slot accepts either an explicit <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept> as before, or a simple string.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Ara el paràmetre <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> accepta o bé un <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept> explícit com abans, o bé una cadena simple.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The string must be acceptable to <bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept>, which will be used to convert the string into a <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept> object as our object is created.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>La cadena ha de ser acceptable per <bpt i='2' x='2'>&lt;c2&gt;</bpt>Date::Manip<ept i='2'>&lt;/c2&gt;</ept>, que serà utilitzat per convertir la cadena a un objecte <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept> quan el nostre objecte sigui creat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Also, because the type constraint is still in place, the verification to ensure the result is a historical date is still active.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>A més, com que la coacció de tipus està a lloc, la verificació per assegurar que el resultat és una data històrica encara està activa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Besides the named classes and <bpt i='0' x='0'>&lt;c0&gt;</bpt>Str<ept i='0'>&lt;/c0&gt;</ept>, <bpt i='1' x='1'>&lt;c1&gt;</bpt>Moose::Util::TypeConstraints<ept i='1'>&lt;/c1&gt;</ept> also establishes types of things like <bpt i='2' x='2'>&lt;c2&gt;</bpt>Bool<ept i='2'>&lt;/c2&gt;</ept> and <bpt i='3' x='3'>&lt;c3&gt;</bpt>HashRef<ept i='3'>&lt;/c3&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>A més dels noms de les classes i <bpt i='0' x='0'>&lt;c0&gt;</bpt>Str<ept i='0'>&lt;/c0&gt;</ept>, <bpt i='1' x='1'>&lt;c1&gt;</bpt>Moose::Util::TypeConstraints<ept i='1'>&lt;/c1&gt;</ept> també estableix els tipus de coses com <bpt i='2' x='2'>&lt;c2&gt;</bpt>Bool<ept i='2'>&lt;/c2&gt;</ept> i <bpt i='3' x='3'>&lt;c3&gt;</bpt>HashRef<ept i='3'>&lt;/c3&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We could even have multiple coercions defined, as long as they are distinct.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Fins i tot podríem tenir múltiples coaccions definides, sempre i quan siguin diferents.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we could use a hashref in the birthtime slot to indicate that we are passing key/value pairs to be handed to a <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept> constructor directly:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, podem utilitzar una referència a una taula de dispersió al paràmetre aniversari per indicar que estem passant parells clau/valor perquè siguin entregats directament a un constructor <bpt i='0' x='0'>&lt;c0&gt;</bpt>DateTime<ept i='0'>&lt;/c0&gt;</ept>:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And now we can use a hashref to define the birthdate:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I ara podem definir una referència a una taula de dispersió per definir l'aniversari:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the value for <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> is a <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, it's used directly.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Si el valor per a <bpt i='0' x='0'>&lt;c0&gt;</bpt>born<ept i='0'>&lt;/c0&gt;</ept> és un <bpt i='1' x='1'>&lt;c1&gt;</bpt>DateTime<ept i='1'>&lt;/c1&gt;</ept>, s'utilitza directament.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If it's a string, it's passed to <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime::Format::DateManip<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Si és una cadena, es passa a <bpt i='2' x='2'>&lt;c2&gt;</bpt>DateTime::Format::DateManip<ept i='2'>&lt;/c2&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And if it's a hashref, it's passed directly as a flattened list to the <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept> constructor.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I si és una referència a una taula de dispersió, es passa directament com una llista aplanada al constructor <bpt i='3' x='3'>&lt;c3&gt;</bpt>DateTime<ept i='3'>&lt;/c3&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Very cool.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Genial.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The value we specify for a <bpt i='0' x='0'>&lt;c0&gt;</bpt>default<ept i='0'>&lt;/c0&gt;</ept> is subject to the same coercions and type checking.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El valor que especifiquem per a <bpt i='0' x='0'>&lt;c0&gt;</bpt>default<ept i='0'>&lt;/c0&gt;</ept> està subjecte a les mateixes coaccions i comprovacions de tipus.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can update <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept> as:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem actualitzar <bpt i='1' x='1'>&lt;c1&gt;</bpt>born<ept i='1'>&lt;/c1&gt;</ept> a:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And now our animals default to being ``born yesterday''.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I ara, el valor per defecte dels animals a ``nascut ahir''.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that the default value is still subject to the type constraints, so if we replace <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> with <bpt i='1' x='1'>&lt;c1&gt;</bpt>tomorrow<ept i='1'>&lt;/c1&gt;</ept>, the default value will be rejected properly.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Observeu que el valor per defecte encara està subjecte a les restriccions de tipus, per tant si substituïm <bpt i='0' x='0'>&lt;c0&gt;</bpt>yesterday<ept i='0'>&lt;/c0&gt;</ept> per <bpt i='1' x='1'>&lt;c1&gt;</bpt>tomorrow<ept i='1'>&lt;/c1&gt;</ept>, el valor per defecte serà rebutjat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that the coercion happens as each object is created, so a default value of <bpt i='2' x='2'>&lt;c2&gt;</bpt>one minute ago<ept i='2'>&lt;/c2&gt;</ept> will give us a new time each time it is called.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Observeu que la coacció passa a mesura que cada objecte es crea, per tant el valor per defecte <bpt i='2' x='2'>&lt;c2&gt;</bpt>one minute ago<ept i='2'>&lt;/c2&gt;</ept> ens donarà una data diferent cada vegada que sigui cridat.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While we're on things we can do to attributes, another interesting item is <bpt i='0' x='0'>&lt;c0&gt;</bpt>lazy<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Mentre estudiem què podem fer als atributs, un altre element interessant és <bpt i='0' x='0'>&lt;c0&gt;</bpt>lazy<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the default value is expensive to compute, we can say ``don't really do this until you need to do it''.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Si el valor per defecte és car de calcular, podem dir ``no facis això fins que ho necessitis''.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, turning <bpt i='1' x='1'>&lt;c1&gt;</bpt>yesterday<ept i='1'>&lt;/c1&gt;</ept> into a DateTime is slightly expensive, so we can flag that as lazy:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, convertir <bpt i='1' x='1'>&lt;c1&gt;</bpt>yesterday<ept i='1'>&lt;/c1&gt;</ept> a un objecte DateTime és una mica car, així que ho podem marcar com lazy:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Speaking of great support, as I was writing that last paragraph, I noticed a bug in the result, and chatting with Stevan on IRC got it fixed before I could turn this article in.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>I parlant de suport fantàstic, mentre escrivia aquest últim pàrraf vaig descobrir un error de programació, i commentar-ho amb Stevan a l'IRC ho va solucionar abans que jo entregués l'article.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Yeay.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Visca.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Anything built with <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> has a very high degree of introspection available.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Qualsevol cosa construïda amb <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> té disponible un grau molt alt d'introspecció.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we can ask one of our animal friends to give us the <bpt i='1' x='1'>&lt;c1&gt;</bpt>meta<ept i='1'>&lt;/c1&gt;</ept> object, with which we can make further requests:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, podem demanar a un dels nostres amics animals que ens doni l'objecte <bpt i='1' x='1'>&lt;c1&gt;</bpt>meta<ept i='1'>&lt;/c1&gt;</ept>, amb el què podrem fer més peticions:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can ask the horse for the <bpt i='2' x='2'>&lt;e2&gt;</bpt>roles<ept i='2'>&lt;/e2&gt;</ept>:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem demanar al cavall per els <bpt i='2' x='2'>&lt;e2&gt;</bpt>roles<ept i='2'>&lt;/e2&gt;</ept>:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this case, we see that we've mixed in one role (of type <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Role<ept i='0'>&lt;/c0&gt;</ept>, and get the name with:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>En aquest cas, veiem que hem obtingut un rol (de tipus <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Role<ept i='0'>&lt;/c0&gt;</ept>), i aconseguit el nom amb:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>which gives us <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> as we might expect.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>cosa que ens dona un <bpt i='0' x='0'>&lt;c0&gt;</bpt>Animal<ept i='0'>&lt;/c0&gt;</ept> tal com esperàvem.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can also ask the meta object for all applicable methods:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem demanar a l'objecte meta tots els mètodes aplicables:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>which returns</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>cosa que retorna</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Nice.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Genial.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Not sure what BEGIN is doing in there, but the rest are things that we've defined.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>No estic segur de què fa BEGIN aquí, però la resta són elements que hem definit.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Many of these methods relate to the attributes, but we'd can query those definitively using <bpt i='0' x='0'>&lt;c0&gt;</bpt>compute_all_applicable_attributes<ept i='0'>&lt;/c0&gt;</ept> instead:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Molts d'aquests mètodes es relacionen amb atributs, però podem demanar aquests definitivament utilitzant <bpt i='0' x='0'>&lt;c0&gt;</bpt>compute_all_applicable_attributes<ept i='0'>&lt;/c0&gt;</ept>:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The result is a set of <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Attribute<ept i='0'>&lt;/c0&gt;</ept> objects.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>El resultat és un conjunt d'objectes <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose::Meta::Attribute<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can map them through <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept> as before to get the names:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Podem utilitzar el «map« sobre <bpt i='1' x='1'>&lt;c1&gt;</bpt>name<ept i='1'>&lt;/c1&gt;</ept> com abans per aconseguir els noms:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can also see if they have setters:</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>També podem veure si tenen «setters»:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that only <bpt i='0' x='0'>&lt;c0&gt;</bpt>color<ept i='0'>&lt;/c0&gt;</ept> has a setter: the other two are read-only, so this makes sense.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Observeu que només <bpt i='0' x='0'>&lt;c0&gt;</bpt>color<ept i='0'>&lt;/c0&gt;</ept> té un «setter»: els altres dos no són modificables, així que això té sentit.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As noted above, Moose is still being actively developed, but is <bpt i='0' x='0'>&lt;e0&gt;</bpt>production ready<ept i='0'>&lt;/e0&gt;</ept> as long as you stick with things that work.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Tal com s'ha comentat abans, Moose encara està sent desenvolupat de forma activa, però és <bpt i='0' x='0'>&lt;e0&gt;</bpt>production ready<ept i='0'>&lt;/e0&gt;</ept> mentre us mantingueu en les coses que funcionen.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You'll find the latest Moose in the CPAN, along with some other core plugins, typically in the <bpt i='1' x='1'>&lt;c1&gt;</bpt>MooseX<ept i='1'>&lt;/c1&gt;</ept> namespace.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Trobareu l'últim Moose al CPAN, juntament amb algun altre complement base, normalment a l'espai de noms <bpt i='1' x='1'>&lt;c1&gt;</bpt>MooseX<ept i='1'>&lt;/c1&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Getopt<ept i='0'>&lt;/c0&gt;</ept> allows you to define your <bpt i='1' x='1'>&lt;c1&gt;</bpt>@ARGV<ept i='1'>&lt;/c1&gt;</ept> processing using type coercion, type constraints, and all that jazz.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Getopt<ept i='0'>&lt;/c0&gt;</ept> us permet definir el vostre procés de <bpt i='1' x='1'>&lt;c1&gt;</bpt>@ARGV<ept i='1'>&lt;/c1&gt;</ept> utilitzant coacció de tipus, restriccions de tipus, i totes aquestes coses.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>I haven't had time to play with that yet, but it's on my to-do list, so perhaps I'll cover that in a future column.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>No he tingut temps per jugar-hi encara, però està a la meva llista de coses pendents, així que potser en parlaré a una columna futura.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Similarly, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Object::Pluggable<ept i='0'>&lt;/c0&gt;</ept> makes it easy to write classes that are <bpt i='1' x='1'>&lt;e1&gt;</bpt>pluggable<ept i='1'>&lt;/e1&gt;</ept>, meaning that they can work well with plugins that define additional methods and attributes.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>De forma similar, <bpt i='0' x='0'>&lt;c0&gt;</bpt>MooseX::Object::Pluggable<ept i='0'>&lt;/c0&gt;</ept> simplifica l'escriptura de classes que són <bpt i='1' x='1'>&lt;e1&gt;</bpt>pluggable<ept i='1'>&lt;/e1&gt;</ept>, que significa que poden treballar bé amb complements que defineixen mètodes i atributs adicionals.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(Think of a generic web server or IRC bot object that has individually selectable additional behaviors.) Again, I'm just noticing these, and they look like they are worthy of their own descriptions later.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>(Penseu en un servidor web genèric o un «bot« IRC que té comportaments adicionals seleccionables individualment.) De nou, m'estic adonant ara d'aquests, i sembla que valgui la pena fer-ne una descripció especial més tard.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Also note that <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> is itself built on <bpt i='1' x='1'>&lt;c1&gt;</bpt>Class::MOP<ept i='1'>&lt;/c1&gt;</ept>, which is a framework for making class frameworks.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Observeu a més que el mateix <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept> està construit sobre <bpt i='1' x='1'>&lt;c1&gt;</bpt>Class::MOP<ept i='1'>&lt;/c1&gt;</ept>, que és un entorn de treball per crear entorns de treball de classes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Perhaps other projects besides Moose will be using Class::MOP as a starting point as well.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Potser altres projectes a més de Moose també utilitzaran Class::MOP com a punt de partida.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, the infrastructure of <bpt i='2' x='2'>&lt;c2&gt;</bpt>Class::Prototyped<ept i='2'>&lt;/c2&gt;</ept> (which I use in my own <bpt i='3' x='3'>&lt;c3&gt;</bpt>CGI::Prototype<ept i='3'>&lt;/c3&gt;</ept>) might be built on <bpt i='4' x='4'>&lt;c4&gt;</bpt>Class::MOP<ept i='4'>&lt;/c4&gt;</ept>, giving it more flexibility and robustness.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Per exemple, l'infraestructura de <bpt i='2' x='2'>&lt;c2&gt;</bpt>Class::Prototyped<ept i='2'>&lt;/c2&gt;</ept> (que utilitzo al meu <bpt i='3' x='3'>&lt;c3&gt;</bpt>CGI::Prototype<ept i='3'>&lt;/c3&gt;</ept>) podria construir-se sobre <bpt i='4' x='4'>&lt;c4&gt;</bpt>Class::MOP<ept i='4'>&lt;/c4&gt;</ept>, proporcionant més flexibilitat i robustesa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>I hope you've enjoyed this two-part introduction to <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Espero que hagueu gaudit d'aquesta introducció en dues parts a <bpt i='0' x='0'>&lt;c0&gt;</bpt>Moose<ept i='0'>&lt;/c0&gt;</ept>.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Have fun playing with a production-ready flexible object-building system.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Divertiu-vos jugant amb un sistema de construcció d'objectes flexible preparat per a producció.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Until next time, enjoy!</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Fins aleshores, gaudiu!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
         <seg>=head1 NAME</seg>
       </tuv>
       <tuv xml:lang="CA">
         <seg>=head1 NAME/NOM</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>=head1 AUTHOR</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>=head1 AUTOR</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>=head1 COPYRIGHT AND LICENSE</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>=head1 COPYRIGHT I LLICÈNCIA</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</seg>
+      </tuv>
+      <tuv xml:lang="CA">
+        <seg>Aquesta llibreria és programari lliure; podeu redistribuir-la i/o modificar-la amb les mateixes condicions del propi Perl.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2709,31 +2766,6 @@ for people who want to be Moose wizards and change how Moose works.</seg>
       </tuv>
       <tuv xml:lang="CA">
         <seg>Si realment teniu curiositat, seguiu llegint les receptes de Meta i Extending, però aquelles són principalment per volen ser mags de Moose i canviar la manera com funciona Moose.</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>=head1 AUTHOR</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>=head1 AUTOR</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>=head1 COPYRIGHT AND LICENSE</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>=head1 COPYRIGHT I LLICÈNCIA</seg>
-      </tuv>
-    </tu>
-    <tu>
-      <tuv xml:lang="EN-US">
-        <seg>This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.</seg>
-      </tuv>
-      <tuv xml:lang="CA">
-        <seg>Aquesta llibreria és programari lliure; podeu redistribuir-la i/o modificar-la amb les mateixes condicions del propi Perl.</seg>
       </tuv>
     </tu>
   </body>

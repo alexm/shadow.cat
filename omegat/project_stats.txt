@@ -1,36 +1,36 @@
-Estadístiques del projecte
+Project Statistics
 
 Total:
 	Segments	2206
-	Paraules	12667
-	Caràcters (sense espais)	70105
-	Caràcters (amb espais)	79418
-Restants:
-	Segments	1701
-	Paraules	5668
-	Caràcters (sense espais)	33884
-	Caràcters (amb espais)	36980
-Únics:
+	Words	12667
+	Characters (without spaces)	70105
+	Characters (including spaces)	79418
+Remaining:
+	Segments	1685
+	Words	5272
+	Characters (without spaces)	31648
+	Characters (including spaces)	34372
+Unique:
 	Segments	901
-	Paraules	6770
-	Caràcters (sense espais)	36587
-	Caràcters (amb espais)	42050
-Únics restants:
-	Segments	574
-	Paraules	2345
-	Caràcters (sense espais)	13955
-	Caràcters (amb espais)	15564
+	Words	6770
+	Characters (without spaces)	36587
+	Characters (including spaces)	42050
+Unique Remaining:
+	Segments	570
+	Words	2246
+	Characters (without spaces)	13396
+	Characters (including spaces)	14912
 
-Estadístiques per fitxer:
+Individual File Statistics:
 
-Nom de fitxer	Paraules totals	Paraules restants	Caràcters totals (sense espais)	Caràcters restants (sense espais)	Caràcters totals (amb espais)	Caràcters restants (amb espais)
-col94.html	2573	1240	14315	7261	16169	7880
+File Name	Total Words	Remaining Words	Total Characters (without spaces)	Remaining Characters (without spaces)	Total Characters (including spaces)	Remaining Characters (including spaces)
+col94.html	2573	1141	14315	6702	16169	7228
 col94_body.html	1814	481	9807	2753	11466	3177
-col94_footer.html	102	102	587	587	680	680
+col94_footer.html	102	3	587	28	680	28
 col94_header.html	657	657	3921	3921	4023	4023
-col95.html	2228	1015	12701	6304	14232	6729
+col95.html	2228	916	12701	5745	14232	6077
 col95_body.html	1469	256	8193	1796	9529	2026
-col95_footer.html	102	102	587	587	680	680
+col95_footer.html	102	3	587	28	680	28
 col95_header.html	657	657	3921	3921	4023	4023
 lib/POD2/CA/Moose/Manual/Concepts.pod.txt	2004	125	10009	828	11619	925
 lib/POD2/CA/Moose/Manual/Unsweetened.pod.txt	1061	1033	6064	5926	6997	6837
